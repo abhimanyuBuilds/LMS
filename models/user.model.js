@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import crypto from "crypto"
+import crypto from "crypto";
+import jwt from "jsonwebtoken"
 
 
 const userSchema = new mongoose.Schema(
@@ -34,10 +35,10 @@ const userSchema = new mongoose.Schema(
                 values: ["Student", "Instructor", "Admin"],
                 message: "Please select a valid role",
             },
-            default: "Stundet",
+            default: "Student",
         },
         avatar: {
-            type: "String",
+            type: String,
             default: "default-avatar.png",
         },
         bio: {
@@ -48,7 +49,7 @@ const userSchema = new mongoose.Schema(
             {
                 courses: {
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: "Courses",
+                    ref: "Course",
                 },
                 enrolledAt: {
                     type: Date,
@@ -56,7 +57,7 @@ const userSchema = new mongoose.Schema(
                 },
             },
         ],
-        createdCourse: [
+        createdCourses: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Courses"
@@ -109,7 +110,7 @@ userSchema.methods.generateResetPasswordToken = async function () {
         .update(resetToken)
         .digest('hex')
 
-    this.resetPasswordExpire = Date.now + 5 * 60 * 1000 // 5 minutes
+    this.resetPasswordExpire = Date.now() + ( 5 * 60 * 1000) // 5 minutes
 
     return resetToken
 }
@@ -151,7 +152,7 @@ userSchema.methods.generateTempToken = function(){
         .update(unHashedToken)
         .digest("hex")
 
-    const tokenExpiry = Date.now + ( 5 * 60 * 1000)
+    const tokenExpiry = Date.now() + ( 5 * 60 * 1000)
 
     return { unHashedToken , HashedToken , tokenExpiry}
 }
