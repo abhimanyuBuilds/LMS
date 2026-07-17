@@ -1,12 +1,13 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 // import { generateToken } from "../utils/generateToken.js";
-// import { deleteMediaFromCloudinary, uploadMedia } from "../utils/cloudinary.js";
+import { deleteMediaFromCloudinary, uploadOnCLoudinary } from "../utils/cloudinary.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { ApiError } from "../utils/ApiError.js";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { appendFile } from "fs";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 /**
  * generate tokens
@@ -100,7 +101,7 @@ export const register = catchAsync(async (req, res) => {
  * Authenticate user and get token
  * @route POST /api/v1/users/signin
  */
-export const signin = catchAsync(async (req, res) => {
+export const signIn = catchAsync(async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
@@ -143,10 +144,81 @@ export const signin = catchAsync(async (req, res) => {
 });
 
 /**
+ * Refresh token rotation
+ * @route api/v1/users/refresh-token
+ */
+
+
+export const refreshToken = catchAsync(async (req, res) => {
+
+  const incommingRefreshToken = req.cookies.refreshToken
+
+
+  if (!incommingRefreshToken) {
+    throw new ApiError(401, error.message)
+  };
+
+  let decoded;
+  try {
+    decoded = jwt.verify(
+      incommingRefreshToken,
+      process.env.REFRESH_TOKEN_SECRET)
+  } catch (error) {
+    throw new ApiError(401, "Unauthorized")
+  };
+
+
+  const user = await User.findById(decoded._id)
+
+  if (!user) {
+    throw new ApiError(404, "User not found")
+  };
+
+
+  const HashIncommingRefreshToken = crypto
+    .createHash('sha256')
+    .update(incommingRefreshToken)
+    .digest('hex')
+
+
+  if (user.refreshToken !== HashIncommingRefreshToken) {
+    throw new ApiError(401, "Invalid Refresh Token")
+  };
+
+
+  const accessToken = user.generateAccessToken()
+  const refreshToken = user.generateRefreshToken()
+
+  const hashedRefreshToken = crypto
+    .createHash('sha256')
+    .update(refreshToken)
+    .digest('hex')
+
+
+  user.refreshToken = hashedRefreshToken
+
+  await user.save({ validateBeforeSave: false })
+
+  const options = {
+    httpOnly: true,
+    secure: true
+  };
+
+  return res
+    .status(200)
+    .cookie('accessToken', accessToken, options)
+    .cookie('refreshToken', refreshToken, options)
+    .json(new ApiResponse(200,
+      { accessToken, refreshToken }
+    ));
+
+});
+
+/**
  * Sign out user and clear cookie
  * @route POST /api/v1/users/signout
  */
-export const signOutUser = catchAsync(async (req, res) => {
+export const signOut = catchAsync(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
@@ -257,16 +329,16 @@ export const changeUserPassword = catchAsync(async (req, res) => {
  * @route POST /api/v1/users/forgot-password
  */
 export const forgotPassword = catchAsync(async (req, res) => {
-  const {email} = req.body
+  const { email } = req.body
 
-  const user = await User.findOne({email})
+  const user = await User.findOne({ email })
 
-  if(!user){
-    throw new ApiError( 404 , "User with this email not found")
+  if (!user) {
+    throw new ApiError(404, "User with this email not found")
   };
 
   const resetToken = user.generateTempToken();
-  await user.save({validateBeforeSave: false});
+  await user.save({ validateBeforeSave: false });
 
 
   return res
@@ -284,26 +356,26 @@ export const forgotPassword = catchAsync(async (req, res) => {
 export const resetPassword = catchAsync(async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
-// get user by reset token
+  // get user by reset token
 
   const user = await User.findOne({
     resetPasswordToken: crypto.createHash('sha256').update(token).digest('hex'),
-    resetPasswordExpire: {$gt : Date.now()},
+    resetPasswordExpire: { $gt: Date.now() },
   })
 
-  if(!user){
-    throw new ApiError( 404 , "User not found")
+  if (!user) {
+    throw new ApiError(404, "User not found")
   }
 
 
-  user.password = password 
+  user.password = password
   user.resetPasswordToken = undefined
   user.resetPasswordExpire = undefined
   await user.save()
 
-  return res 
+  return res
     .status(201)
-    .json(new ApiResponse( 201 , {} ," User password reset successfully"))
+    .json(new ApiResponse(201, {}, " User password reset successfully"))
 
 });
 
@@ -317,9 +389,9 @@ export const deleteUserAccount = catchAsync(async (req, res) => {
 
   await User.findByIdAndDelete(req.id);
 
-  res.cookie("token" , "", {maxAge: 0});
+  res.cookie("token", "", { maxAge: 0 });
   res.status(200).json({
-    sucess: true ,
+    sucess: true,
     message: "Account deleted successfully"
   })
 });
