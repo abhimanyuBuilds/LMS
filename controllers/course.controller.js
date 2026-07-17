@@ -136,7 +136,7 @@ export const searchCourses = catchAsync(async (req, res) => {
  * @route GET /api/v1/courses/published
  */
 export const getPublishedCourses = catchAsync(async (req, res) => {
-  // TODO: Implement get published courses functionality
+  
 });
 
 /**
@@ -144,7 +144,7 @@ export const getPublishedCourses = catchAsync(async (req, res) => {
  * @route GET /api/v1/courses/my-courses
  */
 export const getMyCreatedCourses = catchAsync(async (req, res) => {
-  // TODO: Implement get my created courses functionality
+  
 });
 
 /**
@@ -152,7 +152,7 @@ export const getMyCreatedCourses = catchAsync(async (req, res) => {
  * @route PATCH /api/v1/courses/:courseId
  */
 export const updateCourseDetails = catchAsync(async (req, res) => {
-  // TODO: Implement update course details functionality
+  
 });
 
 /**
@@ -160,7 +160,7 @@ export const updateCourseDetails = catchAsync(async (req, res) => {
  * @route GET /api/v1/courses/:courseId
  */
 export const getCourseDetails = catchAsync(async (req, res) => {
-  // TODO: Implement get course details functionality
+ 
 });
 
 /**
@@ -168,7 +168,7 @@ export const getCourseDetails = catchAsync(async (req, res) => {
  * @route POST /api/v1/courses/:courseId/lectures
  */
 export const addLectureToCourse = catchAsync(async (req, res) => {
-  // TODO: Implement add lecture to course functionality
+ 
 });
 
 /**
@@ -176,5 +176,4 @@ export const addLectureToCourse = catchAsync(async (req, res) => {
  * @route GET /api/v1/courses/:courseId/lectures
  */
 export const getCourseLectures = catchAsync(async (req, res) => {
-  // TODO: Implement get course lectures functionality
 });
