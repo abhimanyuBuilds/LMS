@@ -1,7 +1,7 @@
 import { CourseProgress } from "../models/courseProgress.js";
 import { Course } from "../models/course.model.js";
 import { catchAsync } from "../utils/catchAsync.js";
-import { ApiError, AppError } from "../utils/ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 
 /**
  * Get user's progress for a specific course
