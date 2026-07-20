@@ -1,4 +1,4 @@
-import { CourseProgress } from "../models/courseProgress.js";
+import { CourseProgress } from "../models/courseProgress.model.js";
 import { Course } from "../models/course.model.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -12,7 +12,7 @@ export const getUserCourseProgress = catchAsync(async (req, res) => {
 
   const courseDetail = await Course.findById(courseId)
     .populate("lectures")
-    .select("courseTitle courseThumbnail lectures");
+    .select("title thumbnail lectures");
 
   if (!courseDetail) {
     throw new ApiError(404, "Course not found")
@@ -40,11 +40,11 @@ export const getUserCourseProgress = catchAsync(async (req, res) => {
 
   // calculate course completion
 
-  const totallectures = courseDetail.lectures.length;
+  const totalLectures = courseDetail.lectures.length;
   const completedLectures = courseProgress.lectureProgress.filter((lp) => lp.isCompleted).length
 
 
-  const completionPercentage = Math.round(completedLectures / totallectures) * 100
+  const completionPercentage = Math.round(completedLectures / totalLectures) * 100
 
 
   res.status(200).json({
@@ -63,7 +63,52 @@ export const getUserCourseProgress = catchAsync(async (req, res) => {
  * @route PATCH /api/v1/progress/:courseId/lectures/:lectureId
  */
 export const updateLectureProgress = catchAsync(async (req, res) => {
+  const { courseId, lectureId } = req.params;
 
+  let courseProgress = await CourseProgress.findOne({
+    course: courseId ,
+    user: req.id
+  });
+
+  if(!courseProgress){
+    courseProgress = await CourseProgress.create({
+      user: req.id,
+      course: courseId,
+      isCompleted: false,
+      lectureProgress: []
+    });
+  }
+
+  const lectureIndex = courseProgress.lectureProgress.findIndex(
+    (lecture) => lecture.lecture === lecutreId
+  );
+
+  if(lectureIndex !== -1){
+    courseProgress.lectureProgress[lectureIndex].isCompleted = true
+  }else{
+    courseProgress.lectureProgress.push({
+      lecture: lectureId,
+      isCompleted: true
+    });
+  }
+
+  // check if course is completed
+
+  const course = await Course.findById(courseId);
+  const completedLectures = courseProgress.lectureProgress.filter((lp) => lp.isCompleted).length
+
+  courseProgress.isCompleted = course.lectures.length === completedLectures;
+
+  await courseProgress.save()
+
+  res.status(200).json({
+    success: true ,
+    message: "Leacture progress updated successfully",
+    data:{
+      lectureProgress: courseProgress.lectureProgress,
+      isCompleted: courseProgress.isCompleted
+    }
+  })
 });
 
 /**
@@ -131,9 +176,9 @@ export const resetCourseProgress = catchAsync(async (req, res) => {
   await courseProgress.save()
 
   res.status(200)
-  .json({
-    success: true ,
-    message: "Course progress reset successfully",
-    data: courseProgress
-  })
+    .json({
+      success: true,
+      message: "Course progress reset successfully",
+      data: courseProgress
+    })
 });
