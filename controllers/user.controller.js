@@ -14,7 +14,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
  * 
  */
 
-const generateAccessAndRefreshToken = async (userId) => {
+export const generateAccessAndRefreshToken = async (userId) => {
   try {
     const user = await User.findById(userId)
     const accessToken = user.generateAccessToken()
@@ -68,9 +68,6 @@ export const register = catchAsync(async (req, res) => {
 
 
   await user.save({ validateBeforeSave: false })
-
-
-
 
   await sendEmail({
     email: user.email,
@@ -149,7 +146,7 @@ export const signIn = catchAsync(async (req, res) => {
  */
 
 
-export const refreshToken = catchAsync(async (req, res) => {
+export const refreshTokenRotation = catchAsync(async (req, res) => {
 
   const incommingRefreshToken = req.cookies.refreshToken
 

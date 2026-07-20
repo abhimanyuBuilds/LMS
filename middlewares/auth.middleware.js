@@ -30,3 +30,16 @@ export const verifyJWT = catchAsync(async (req, res, next) => {
         throw new ApiError(401, error.message)
     }
 });
+
+
+
+export const restrictTo = (...roles) => {
+return catchAsync(async ( req , res) => {
+    if(!roles.includes(req.user.role)){
+        throw new ApiError(403 , 
+            "You do not have permission to perform this action"
+        );
+    }
+    next();
+});
+};

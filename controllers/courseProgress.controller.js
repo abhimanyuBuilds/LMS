@@ -1,14 +1,61 @@
 import { CourseProgress } from "../models/courseProgress.js";
 import { Course } from "../models/course.model.js";
-import { catchAsync } from "../middleware/error.middleware.js";
-import { AppError } from "../middleware/error.middleware.js";
+import { catchAsync } from "../utils/catchAsync.js";
+import { ApiError, AppError } from "../utils/ApiError.js";
 
 /**
  * Get user's progress for a specific course
- * @route GET /api/v1/progress/:courseId
+ * @route GET /api/v1/progress/:courseId ✅
  */
 export const getUserCourseProgress = catchAsync(async (req, res) => {
-  // TODO: Implement get user's course progress functionality
+  const { courseId } = req.params;
+
+  const courseDetail = await Course.findById(courseId)
+    .populate("lectures")
+    .select("courseTitle courseThumbnail lectures");
+
+  if (!courseDetail) {
+    throw new ApiError(404, "Course not found")
+  };
+
+
+  const courseProgress = await CourseProgress.findOne({
+    course: courseId,
+    user: req.id,
+  }).populate("course");
+
+  if (!courseProgress) {
+    return res
+      .status(200)
+      .json({
+        success: true,
+        data: {
+          courseDetails,
+          progress: [],
+          isCompleted: false,
+          completionPercentage: 0
+        },
+      });
+  }
+
+  // calculate course completion
+
+  const totallectures = courseDetail.lectures.length;
+  const completedLectures = courseProgress.lectureProgress.filter((lp) => lp.isCompleted).length
+
+
+  const completionPercentage = Math.round(completedLectures / totallectures) * 100
+
+
+  res.status(200).json({
+    success: true,
+    data: {
+      courseDetails,
+      progress: [],
+      isCompleted: false,
+      completionPercentage: 0
+    },
+  })
 });
 
 /**
@@ -16,21 +63,77 @@ export const getUserCourseProgress = catchAsync(async (req, res) => {
  * @route PATCH /api/v1/progress/:courseId/lectures/:lectureId
  */
 export const updateLectureProgress = catchAsync(async (req, res) => {
-  // TODO: Implement update lecture progress functionality
+
 });
 
 /**
  * Mark entire course as completed
- * @route PATCH /api/v1/progress/:courseId/complete
+ * @route PATCH /api/v1/progress/:courseId/complete ✅
  */
 export const markCourseAsCompleted = catchAsync(async (req, res) => {
-  // TODO: Implement mark course as completed functionality
+  const { courseId } = req.params;
+
+  const courseProgress = await CourseProgress.findOne({
+    course: courseId,
+    user: req.id,
+  });
+
+  if (!courseProgress) {
+    throw new ApiError(404, "course not found")
+  };
+
+  // Mark lecture as isCompleted
+
+  courseProgress.lectureProgress.forEach((progress) => {
+    progress.isCompleted = true;
+  });
+
+  courseProgress.isCompleted = true
+
+  await courseProgress.save()
+
+  return res
+    .status(200)
+    .json({
+      success: true,
+      message: "Course marked as completed",
+      data: {
+        courseProgress,
+      },
+    });
 });
 
 /**
  * Reset course progress
- * @route PATCH /api/v1/progress/:courseId/reset
+ * @route PATCH /api/v1/progress/:courseId/reset ✅
  */
 export const resetCourseProgress = catchAsync(async (req, res) => {
-  // TODO: Implement reset course progress functionality
+  const { courseId } = req.params;
+
+  const courseProgress = await courseProgress.findOne({
+    course: courseId,
+    user: req.id
+  });
+
+  if (!courseProgress) {
+    throw new ApiError(404, "course not found")
+  };
+
+  // Rest all progress
+
+
+  courseProgress.lectureProgress.forEach((lp) => {
+    lp.isCompleted = false;
+  });
+
+  courseProgress.isCompleted = false;
+
+  await courseProgress.save()
+
+  res.status(200)
+  .json({
+    success: true ,
+    message: "Course progress reset successfully",
+    data: courseProgress
+  })
 });
