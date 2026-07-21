@@ -20,9 +20,18 @@ export const generateAccessAndRefreshToken = async (userId) => {
     const accessToken = user.generateAccessToken()
     const refreshToken = user.generateRefreshToken()
 
-    user.refreshToken = refreshToken
 
-    await user.save({ validateBeforeSave: true })
+    const hashRefreshToken = crypto
+      .createHash("sha256")
+      .update(refreshToken)
+      .digest('hex')
+
+    user.refreshToken = hashRefreshToken
+
+    //debug
+    // console.log(refreshToken)
+
+    await user.save({ validateBeforeSave: false })
 
     return { accessToken, refreshToken }
   } catch (error) {
@@ -42,6 +51,7 @@ export const generateAccessAndRefreshToken = async (userId) => {
  */
 export const register = catchAsync(async (req, res) => {
 
+  console.log(req.body)
   const { name, email, password, role } = req.body
 
   const existedUser = await User.findOne(
@@ -61,25 +71,25 @@ export const register = catchAsync(async (req, res) => {
   });
 
 
-  const { unHashedToken, HashedToken, tokenExpiry } = user.generateTempToken()
+  // const { unHashedToken, HashedToken, tokenExpiry } = user.generateTempToken()
 
-  user.EmailVerificationToken = HashedToken
-  user.EmailVerificationExpiry = tokenExpiry
+  // user.EmailVerificationToken = HashedToken
+  // user.EmailVerificationExpiry = tokenExpiry
 
 
-  await user.save({ validateBeforeSave: false })
+  // await user.save({ validateBeforeSave: false })
 
-  await sendEmail({
-    email: user.email,
-    subject: "Please verify your email",
-    mailgenContent: emailVerifificationMailgenContent(
-      user.username,
-      `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${unHashedToken} `
-    ),
-  })
+  // await sendEmail({
+  //   email: user.email,
+  //   subject: "Please verify your email",
+  //   mailgenContent: emailVerifificationMailgenContent(
+  //     user.username,
+  //     `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${unHashedToken} `
+  //   ),
+  // })
 
   const createdUser = await User.findById(user._id).select(
-    "-password  -refreshToken , -accessToken , -emailVerificationToken -emailVerificationExpiry "
+    "-password  -refreshToken  -accessToken  -emailVerificationToken -emailVerificationExpiry "
   )
 
   if (!createdUser) {
@@ -87,7 +97,7 @@ export const register = catchAsync(async (req, res) => {
   }
 
   return res
-    .statsu(201)
+    .status(201)
     .json(new ApiResponse(
       201, { user: createdUser }, "User created successfully\n verification email has been sent to your email"
     ));
@@ -101,7 +111,7 @@ export const register = catchAsync(async (req, res) => {
 export const signIn = catchAsync(async (req, res) => {
   const { email, password } = req.body
 
-  const user = await User.findOne({ email })
+  const user = await User.findOne({ email }).select("+name")
 
   if (!user) {
     throw new ApiError(404, "user not found with these credientials\n register first to login")
@@ -111,17 +121,15 @@ export const signIn = catchAsync(async (req, res) => {
 
 
   if (!isPasswordValid) {
-    throw new ApiError(400, "Wrong password please try again")
+    throw new ApiError(400, "User doesn't exit\n Wrong Password")
   };
 
-  const { accessToken, refreshToken } = user.generateAccessAndRefreshToken(user._id);
+  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id);
 
-
+  await user.updateLastActive()
   const loggedInUser = await User.findById(user._id).select(
-    " -password -emailVerificationExpiry -emailVerificationToken  -refreshToken"
+    " -password -emailVerificationExpiry -emailVerificationToken  -refreshToken -accessToken -email -role -createdCourses -enrolledCourses -createdAt -updatedAt -lastActive -__v  -Avatar "
   );
-
-
 
 
   const options = {
@@ -129,13 +137,12 @@ export const signIn = catchAsync(async (req, res) => {
     secure: true
   };
 
-
   return res
     .status(200)
     .cookie('accessToken', accessToken, options)
     .cookie('refreshToken', refreshToken, options)
     .json(
-      new ApiResponse(200, { data: loggedInUser, accessToken, refreshToken }, "User logged-IN Successfully"),
+      new ApiResponse(200, { loggedInUser, accessToken, refreshToken }, "User logged-IN Successfully"),
     );
 
 });
@@ -151,9 +158,14 @@ export const refreshTokenRotation = catchAsync(async (req, res) => {
   const incommingRefreshToken = req.cookies.refreshToken
 
 
+  //only for debugging
+  // console.log("\nIncomming token --- ",incommingRefreshToken);
   if (!incommingRefreshToken) {
     throw new ApiError(401, error.message)
   };
+
+  // only for debugging
+  // console.log(`Refresh Token ---${process.env.REFRESH_TOKEN_SECRET}`)
 
   let decoded;
   try {
@@ -177,6 +189,8 @@ export const refreshTokenRotation = catchAsync(async (req, res) => {
     .update(incommingRefreshToken)
     .digest('hex')
 
+  // console.log(` Hashed Incoming Refresh ====  ${HashIncommingRefreshToken}`)
+  // console.log("DataBase Refresh Token-- ", user.refreshToken)  ONly for debugging
 
   if (user.refreshToken !== HashIncommingRefreshToken) {
     throw new ApiError(401, "Invalid Refresh Token")
@@ -205,9 +219,10 @@ export const refreshTokenRotation = catchAsync(async (req, res) => {
     .status(200)
     .cookie('accessToken', accessToken, options)
     .cookie('refreshToken', refreshToken, options)
-    .json(new ApiResponse(200,
-      { accessToken, refreshToken }
-    ));
+    .json(
+      new ApiResponse(200,
+        { accessToken, refreshToken }
+      ));
 
 });
 
@@ -216,7 +231,7 @@ export const refreshTokenRotation = catchAsync(async (req, res) => {
  * @route POST /api/v1/users/signout
  */
 export const signOut = catchAsync(async (req, res) => {
-  await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     req.user._id,
     {
       $set: {
@@ -228,7 +243,6 @@ export const signOut = catchAsync(async (req, res) => {
     }
   )
 
-
   const options = {
     httpOnly: true,
     secure: true
@@ -236,8 +250,8 @@ export const signOut = catchAsync(async (req, res) => {
 
   return res
     .status(200)
-    .clearcookie('accessToken', accessToken)
-    .clearcookie('refreshToken', refreshToken)
+    .clearCookie('accessToken', options)
+    .clearCookie('refreshToken',options)
     .json(
       new ApiResponse(200, {}, "User logout successfully")
     )

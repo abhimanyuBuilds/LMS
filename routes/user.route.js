@@ -31,7 +31,7 @@ const router = express.Router()
 // Auth route
 router.post("/signUp", validate(validateSignUp), register)
 router.post("/singIn", validate(validateSignIn), signIn)
-router.post("/signOut", signOut)
+router.post("/signOut", verifyJWT ,signOut)
 
 
 // Profile router
@@ -45,8 +45,8 @@ router.patch("/profile",
 
 // password management
 
-router.patch("/change-password", 
-    validate(validatePasswordChanged)         ,
+router.patch("/change-password",
+    validate(validatePasswordChanged),
     verifyJWT,
     changeUserPassword
 );
@@ -58,6 +58,10 @@ router.delete("/account",
     verifyJWT,
     deleteUserAccount
 );
+
+
+router.post("/refresh-token",
+     refreshTokenRotation)
 
 export default router
 

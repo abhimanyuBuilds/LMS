@@ -74,7 +74,7 @@ export const validateSignUp = Joi.object({
             "admin"
 
         )
-        .required()
+        // .required()
         .messages({
 
             "any.required":

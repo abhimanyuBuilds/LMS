@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse } from "../utils/ApiResponse.js"
 import { catchAsync } from "../utils/catchAsync.js"
+import  User from "../models/user.model.js"
 
 export const verifyJWT = catchAsync(async (req, res, next) => {
     const token =
@@ -10,7 +10,7 @@ export const verifyJWT = catchAsync(async (req, res, next) => {
 
 
     if (!token) {
-        throw new ApiError(401, error.message)
+        throw new ApiError(401, "Please login first to logout")
     };
 
 

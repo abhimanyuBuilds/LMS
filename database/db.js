@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose, { get } from "mongoose"
 const MAX_RETRY = 3;
 const RETRY_INTERVAL = 5000;
 
@@ -42,8 +42,8 @@ class DataBaseConnection {
             }
 
             const connectionOption = {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
+                // useNewUrlParser: true,
+                // useUnifiedTopology: true,
                 maxPoolSize: 10,
                 serverSelectionTimeoutMs: 5000,
                 socketTimeoutMs: 45000,
@@ -54,7 +54,7 @@ class DataBaseConnection {
                 mongoose.set('debug', true)
             }
 
-
+            console.log(`${process.env.MONGODB_URI} is a DB uri`)
             await mongoose.connect(process.env.MONGODB_URI, connectionOption)
             this.retryCount = 0 // reset retry count on successful connection
         } catch (error) {
@@ -105,3 +105,5 @@ const dbConnection = new DataBaseConnection()
 
 export default dbConnection.connect.bind(dbConnection)
 export const getDBStatus = dbConnection.getConnectionStatus.bind(dbConnection)
+
+

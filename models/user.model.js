@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: [true, "password is required"],
             minLength: [8, "password must be 8 character"],
-            select: false,
+            // select: false,
         },
         role: {
             type: String,
@@ -66,13 +66,13 @@ const userSchema = new mongoose.Schema(
 
         resetPasswordToken: String,
 
-        resetPasswordExpire: Date, 
+        resetPasswordExpire: Date,
 
-        refreshToken: String ,
+        refreshToken: String,
 
         refreshTokenExpiry: Date,
 
-        EmailVerificationToken: String ,
+        EmailVerificationToken: String,
 
         EmailVerificationExpiry: Date,
         lastActive: {
@@ -88,17 +88,15 @@ const userSchema = new mongoose.Schema(
 );
 
 
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) {
-        return next()
-    }
+userSchema.pre("save", async function () {
+    if (!this.isModified("password")) 
+        return
     this.password = await bcrypt.hash(this.password, 12)
-    next()
 });
 
 
-userSchema.methods.comparePassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password)
+userSchema.methods.isPasswordCorrect = async function (Password) {
+    return await bcrypt.compare(Password, this.password)
 };
 
 
@@ -110,7 +108,7 @@ userSchema.methods.generateResetPasswordToken = async function () {
         .update(resetToken)
         .digest('hex')
 
-    this.resetPasswordExpire = Date.now() + ( 5 * 60 * 1000) // 5 minutes
+    this.resetPasswordExpire = Date.now() + (5 * 60 * 1000) // 5 minutes
 
     return resetToken
 }
@@ -143,7 +141,7 @@ userSchema.methods.generateRefreshToken = function () {
 
 
 
-userSchema.methods.generateTempToken = function(){
+userSchema.methods.generateTempToken = function () {
     const unHashedToken = crypto.randomBytes(32).toString('hex')
 
 
@@ -152,9 +150,15 @@ userSchema.methods.generateTempToken = function(){
         .update(unHashedToken)
         .digest("hex")
 
-    const tokenExpiry = Date.now() + ( 5 * 60 * 1000)
+    const tokenExpiry = Date.now() + (5 * 60 * 1000)
 
-    return { unHashedToken , HashedToken , tokenExpiry}
+    return { unHashedToken, HashedToken, tokenExpiry }
 }
 
-export default mongoose.model("User" , userSchema)
+
+userSchema.methods.updateLastActive = function () {
+    this.lastActive = Date.now()
+        return this.save({validateBeforeSave: false})
+};
+
+export default mongoose.model("User", userSchema)
