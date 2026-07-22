@@ -70,8 +70,8 @@ export const validateSignUp = Joi.object({
         .valid(
 
             "student",
-            "instructor",
-            "admin"
+            "Instructor",
+            "Admin"
 
         )
         // .required()

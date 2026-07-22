@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema(
                 "Please provide a valid email",
             ],
         },
+        isEmailVerified: {
+            type: String,
+            default: false
+        },
         password: {
             type: String,
             required: [true, "password is required"],
@@ -32,7 +36,7 @@ const userSchema = new mongoose.Schema(
         role: {
             type: String,
             enum: {
-                values: ["Student", "Instructor", "Admin"],
+                values: ["student", "Instructor", "Admin"],
                 message: "Please select a valid role",
             },
             default: "Student",
@@ -89,7 +93,7 @@ const userSchema = new mongoose.Schema(
 
 
 userSchema.pre("save", async function () {
-    if (!this.isModified("password")) 
+    if (!this.isModified("password"))
         return
     this.password = await bcrypt.hash(this.password, 12)
 });
@@ -158,7 +162,7 @@ userSchema.methods.generateTempToken = function () {
 
 userSchema.methods.updateLastActive = function () {
     this.lastActive = Date.now()
-        return this.save({validateBeforeSave: false})
+    return this.save({ validateBeforeSave: false })
 };
 
 export default mongoose.model("User", userSchema)

@@ -1,11 +1,10 @@
 import express from "express"
 import dotenv from "dotenv"
-import logger from "./logger.js"
+import logger from "./services/logger.js"
 import morgan from "morgan"
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
-
 import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
 dotenv.config()

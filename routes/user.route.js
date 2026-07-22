@@ -10,7 +10,8 @@ import {
     changeUserPassword,
     forgotPassword,
     resetPassword,
-    deleteUserAccount
+    deleteUserAccount,
+    userEmailVerification
 } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../utils/multer.js";
@@ -32,6 +33,7 @@ const router = express.Router()
 router.post("/signUp", validate(validateSignUp), register)
 router.post("/singIn", validate(validateSignIn), signIn)
 router.post("/signOut", verifyJWT ,signOut)
+router.post("/verify-email/:verificationToken" , userEmailVerification)
 
 
 // Profile router

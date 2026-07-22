@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 // import { generateToken } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadOnCLoudinary } from "../utils/cloudinary.js";
+import { emailVerificationMailgenContent, forgotPasswordMailgenContent, sendEmail } from "../services/sendMail.js"
 import { catchAsync } from "../utils/catchAsync.js";
 import { ApiError } from "../utils/ApiError.js";
 import crypto from "crypto";
@@ -71,25 +72,31 @@ export const register = catchAsync(async (req, res) => {
   });
 
 
-  // const { unHashedToken, HashedToken, tokenExpiry } = user.generateTempToken()
+  const { unHashedToken, HashedToken, tokenExpiry } = user.generateTempToken()
 
-  // user.EmailVerificationToken = HashedToken
-  // user.EmailVerificationExpiry = tokenExpiry
+  user.EmailVerificationToken = HashedToken
+  user.EmailVerificationExpiry = tokenExpiry
 
 
-  // await user.save({ validateBeforeSave: false })
+  await user.save({ validateBeforeSave: false })
 
-  // await sendEmail({
-  //   email: user.email,
-  //   subject: "Please verify your email",
-  //   mailgenContent: emailVerifificationMailgenContent(
-  //     user.username,
-  //     `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${unHashedToken} `
-  //   ),
-  // })
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Please verify your email",
+      mailgenContent: emailVerificationMailgenContent(
+        user.username,
+        `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${unHashedToken} `
+      ),
+    })
+    console.log("Mail has been sent successfully...")
+  } catch (error) {
+    console.log(error)
+  }
 
   const createdUser = await User.findById(user._id).select(
-    "-password  -refreshToken  -accessToken  -emailVerificationToken -emailVerificationExpiry "
+    "-password  -refreshToken  -accessToken  -emailVerificationToken -emailVerificationExpiry -email -createdCourses -enrolledCourses -createdAt -updatedAt -__v -EmailVerificationExpiry -EmailVerificationToken -id "
   )
 
   if (!createdUser) {
@@ -251,7 +258,7 @@ export const signOut = catchAsync(async (req, res) => {
   return res
     .status(200)
     .clearCookie('accessToken', options)
-    .clearCookie('refreshToken',options)
+    .clearCookie('refreshToken', options)
     .json(
       new ApiResponse(200, {}, "User logout successfully")
     )
@@ -406,3 +413,45 @@ export const deleteUserAccount = catchAsync(async (req, res) => {
     message: "Account deleted successfully"
   })
 });
+
+
+/**
+ * Verify User email
+ * @route POST /api/v1/user/verify-email 
+ */
+
+export const userEmailVerification = catchAsync(async (req, res) => {
+  const { verificationToken } = req.params
+
+  if (!verificationToken) {
+    throw new ApiError(404, "Email verification token not found..")
+  };
+
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(verificationToken)
+    .digest('hex')
+
+
+  const user = await User.findOne({
+    EmailVerificationToken: hashedToken,
+    EmailVerificationExpiry: { $gt: Date.now() },
+  });
+
+  if(!user){
+    throw new ApiError(404 , "Token is invalid or expired..")
+  };
+
+  user.EmailVerificationToken = undefined;
+  user.EmailVerificationExpiry = undefined;
+
+  user.isEmailVerified = true 
+
+  await user.save({validateBeforeSave: false})
+
+  return res 
+    .status(200)
+    .json(
+      new ApiResponse(200 , { isEmailVerified: true } , "Email is verified")
+    )
+})
