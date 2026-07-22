@@ -7,8 +7,8 @@ import cors from "cors";
 import helmet from "helmet";
 import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
+import {apiLimiter} from "./middlewares/Auth.rateLimmter.middleware.js"
 dotenv.config()
-
 
 const app = express()
 const PORT = process.env.PORT
@@ -17,6 +17,8 @@ const PORT = process.env.PORT
 app.use(express.json({ limit: "10kb" })); // Body limit is 10kb
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
+
+app.use("/api" , apiLimiter)
 
 
 const morganFormat = ":method :url :status :response-time ms";

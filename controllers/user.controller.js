@@ -51,7 +51,7 @@ export const generateAccessAndRefreshToken = async (userId) => {
  */
 export const register = catchAsync(async (req, res) => {
 
- 
+
   const { name, email, password, role } = req.body
 
   const existedUser = await User.findOne(
@@ -437,20 +437,63 @@ export const userEmailVerification = catchAsync(async (req, res) => {
     EmailVerificationExpiry: { $gt: Date.now() },
   });
 
-  if(!user){
-    throw new ApiError(404 , "Token is invalid or expired..")
+  if (!user) {
+    throw new ApiError(404, "Token is invalid or expired..")
   };
 
   user.EmailVerificationToken = undefined;
   user.EmailVerificationExpiry = undefined;
 
-  user.isEmailVerified = true 
+  user.isEmailVerified = true
 
-  await user.save({validateBeforeSave: false})
+  await user.save({ validateBeforeSave: false })
 
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, { isEmailVerified: true }, "Email is verified")
+    )
+});
+
+
+export const resendEmailVerification = catchAsync(async (req, res) => {
+
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    throw new ApiError(404, "User not found")
+  };
+
+
+  if (user.isEmailVerified) {
+    throw new ApiError(400, "User email has already been verified..")
+  };
+
+  const { unHashedToken, HashedToken, tokenExpiry } = user.generateTempToken()
+
+
+  user.EmailVerificationToken = HashedToken;
+  user.EmailVerificationExpiry = tokenExpiry;
+
+  await user.save({ validateBeforeSave: false });
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "We have received your request to verify you email..",
+      mailgenContent: emailVerificationMailgenContent(
+        user.name,
+        `${req.protocol}://${req.get('host')}/api/v1/user/verify-email/${unHashedToken} `
+      )
+    });
+    console.log("Resend Email verification ✅")
+  } catch (error) {
+    throw new ApiError( 500 , "Failed to send verification email..")
+  };
   return res 
     .status(200)
     .json(
-      new ApiResponse(200 , { isEmailVerified: true } , "Email is verified")
+      new ApiResponse( 200 , {} , "Verification email sent successfully.")
     )
-})
+
+});

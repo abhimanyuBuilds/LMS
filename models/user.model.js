@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
             ],
         },
         isEmailVerified: {
-            type: String,
+            type: Boolean,
             default: false
         },
         password: {

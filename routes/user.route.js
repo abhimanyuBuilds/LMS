@@ -11,7 +11,8 @@ import {
     forgotPassword,
     resetPassword,
     deleteUserAccount,
-    userEmailVerification
+    userEmailVerification,
+    resendEmailVerification
 } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../utils/multer.js";
@@ -21,7 +22,12 @@ import {
     validatePasswordChanged,
     paginationSchema
 } from "../validation/auth.validation.js"
-
+import {
+    signUpRateLimit, signInRateLimit,
+    signOutRateLimit, getCurrentUserRateLimit,
+    updateUserProfileRateLimit, changeUserPasswordRateLimit,
+    forgotPasswordRateLimit, resetPasswordRateLimit, deleteUserAccountRateLimit, resendMailVerficicationRateLimit
+} from "../middlewares/Auth.rateLimmter.middleware.js"
 import { validate } from "../middlewares/validation.middleware.js"
 const router = express.Router()
 
@@ -30,10 +36,11 @@ const router = express.Router()
 
 
 // Auth route
-router.post("/signUp", validate(validateSignUp), register)
-router.post("/singIn", validate(validateSignIn), signIn)
-router.post("/signOut", verifyJWT ,signOut)
-router.post("/verify-email/:verificationToken" , userEmailVerification)
+router.post("/signUp", validate(validateSignUp), signUpRateLimit, register)
+router.post("/singIn", validate(validateSignIn), signInRateLimit, signIn)
+router.post("/signOut", verifyJWT, signOutRateLimit, signOut)
+router.post("/verify-email/:verificationToken", userEmailVerification)
+router.post("/Resend-verifyEmail", verifyJWT, resendEmailVerification , resendMailVerficicationRateLimit)
 
 
 // Profile router
@@ -63,7 +70,7 @@ router.delete("/account",
 
 
 router.post("/refresh-token",
-     refreshTokenRotation)
+    refreshTokenRotation)
 
 export default router
 

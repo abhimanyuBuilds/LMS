@@ -10,7 +10,7 @@ export const verifyJWT = catchAsync(async (req, res, next) => {
 
 
     if (!token) {
-        throw new ApiError(401, "Please login first to logout")
+        throw new ApiError(401, "Access Denied")
     };
 
 

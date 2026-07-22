@@ -1,6 +1,17 @@
 import { rateLimit } from 'express-rate-limit'
 
 
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15min 
+    limit: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        success: false,
+        status: 429,
+        message: "Too many request. please try again later"
+    }
+});
 
 const signUpRateLimit = rateLimit({
     windowMs: 10 * 60 * 1000,// 10 min
@@ -65,7 +76,7 @@ const forgotPasswordRateLimit = rateLimit({
 
 
 const resetPasswordRateLimit = rateLimit({
-    windowMS: 10 * 60 * 1000,
+    windowMs: 10 * 60 * 1000,
     limit: 3,
     standardHeaders: 'draft-8',
     legacyHeaders: false,
@@ -81,12 +92,23 @@ const deleteUserAccountRateLimit = rateLimit({
     ipv6Subnet: 56
 })
 
-
+const resendMailVerficicationRateLimit = rateLimit({
+    windowMs: 5 * 60 * 1000,
+    limit: 2,
+    standardHeaders: 'draft-8',
+    legacyHeaders: false,
+    ipv6Subnet: 56,
+    message: {
+        success: false,
+        message:
+            "Too many verification requests. Please try again after 5 minutes."
+    }
+});
 
 
 export {
     signUpRateLimit, signInRateLimit,
     signOutRateLimit, getCurrentUserRateLimit,
     updateUserProfileRateLimit, changeUserPasswordRateLimit,
-    forgotPasswordRateLimit, resetPasswordRateLimit, deleteUserAccountRateLimit
+    forgotPasswordRateLimit, resetPasswordRateLimit, deleteUserAccountRateLimit, resendMailVerficicationRateLimit, apiLimiter
 }
