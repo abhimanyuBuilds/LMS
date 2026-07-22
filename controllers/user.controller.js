@@ -1,6 +1,5 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-// import { generateToken } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadOnCLoudinary } from "../utils/cloudinary.js";
 import { emailVerificationMailgenContent, forgotPasswordMailgenContent, sendEmail } from "../services/sendMail.js"
 import { catchAsync } from "../utils/catchAsync.js";
@@ -52,7 +51,7 @@ export const generateAccessAndRefreshToken = async (userId) => {
  */
 export const register = catchAsync(async (req, res) => {
 
-  console.log(req.body)
+ 
   const { name, email, password, role } = req.body
 
   const existedUser = await User.findOne(
@@ -86,10 +85,10 @@ export const register = catchAsync(async (req, res) => {
       email: user.email,
       subject: "Please verify your email",
       mailgenContent: emailVerificationMailgenContent(
-        user.username,
-        `${req.protocol}://${req.get('host')}/api/v1/auth/verify-email/${unHashedToken} `
+        user.name,
+        `${req.protocol}://${req.get('host')}/api/v1/user/verify-email/${unHashedToken} `
       ),
-    })
+    });
     console.log("Mail has been sent successfully...")
   } catch (error) {
     console.log(error)
