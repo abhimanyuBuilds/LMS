@@ -36,20 +36,20 @@ const router = express.Router()
 
 
 // Auth route
-router.post("/signUp", validate(validateSignUp), signUpRateLimit, register)
-router.post("/singIn", validate(validateSignIn), signInRateLimit, signIn)
-router.post("/signOut", verifyJWT, signOutRateLimit, signOut)
-router.post("/verify-email/:verificationToken", userEmailVerification)
-router.post("/Resend-verifyEmail", verifyJWT, resendEmailVerification , resendMailVerficicationRateLimit)
+router.post("/signUp", validate(validateSignUp), signUpRateLimit, register) // Tested
+router.post("/singIn", validate(validateSignIn), signInRateLimit, signIn) // Tested
+router.post("/signOut", verifyJWT, signOutRateLimit, signOut) // Tested
+router.post("/verify-email/:verificationToken", userEmailVerification) // Tested
+router.post("/Resend-verifyEmail", verifyJWT, resendEmailVerification , resendMailVerficicationRateLimit) // Tested
 
 
 // Profile router
 
-router.get("/profile", verifyJWT, getCurrentUserProfile);
+router.get("/profile", verifyJWT, getCurrentUserProfile); // Tested
 router.patch("/profile",
     verifyJWT,
     upload.single("avatar"),
-    updateUserProfile)
+    updateUserProfile) // Tested
 
 
 // password management
@@ -60,6 +60,9 @@ router.patch("/change-password",
     changeUserPassword
 );
 
+router.post("/forgot-password", verifyJWT , forgotPassword)
+
+router.post("/reset-password/:passwordResetUrl", verifyJWT , resetPassword)
 
 // Account management
 

@@ -67,17 +67,19 @@ export const forgotPasswordMailgenContent = (userName, passwordResetUrl) => {
     return {
         body: {
             name: userName,
-            intro: `Welcome ${userName} We\'re very excited to have you on board.`,
+            intro: [`Hi ${userName},`, "We received a request to reset the password for your account.",
+            "If you made this request, click the button below to set a new password.",
+            "If you did not request a password reset, you can safely ignore this email."],
             action: {
-                instructions: 'To verify your email, please click here:',
-                button: {
-                    color: '#2253bc', // Optional action button color
-                    text: 'Confirm your account',
-                    link: verificationUrl
-                }
-            },
-            outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
-        },
+        instructions: 'Click the button below to reset your password. This link will expire in 10 minutes.',
+            button: {
+            color: '#2253bc', // Optional action button color
+                text: 'Reset Password',
+                    link: passwordResetUrl
+        }
+    },
+    outro: 'Need help, or have questions? Just reply to this email, we\'d love to help.'
+},
     }
 };
 

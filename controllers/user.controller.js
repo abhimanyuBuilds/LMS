@@ -47,7 +47,7 @@ export const generateAccessAndRefreshToken = async (userId) => {
 
 /**
  * Create a new user account
- * @route POST /api/v1/users/signup
+ * @route POST /api/v1/user/signup
  */
 export const register = catchAsync(async (req, res) => {
 
@@ -112,7 +112,7 @@ export const register = catchAsync(async (req, res) => {
 
 /**
  * Authenticate user and get token
- * @route POST /api/v1/users/signin
+ * @route POST /api/v1/user/signin
  */
 export const signIn = catchAsync(async (req, res) => {
   const { email, password } = req.body
@@ -155,7 +155,7 @@ export const signIn = catchAsync(async (req, res) => {
 
 /**
  * Refresh token rotation
- * @route api/v1/users/refresh-token
+ * @route api/v1/user/refresh-token
  */
 
 
@@ -234,7 +234,7 @@ export const refreshTokenRotation = catchAsync(async (req, res) => {
 
 /**
  * Sign out user and clear cookie
- * @route POST /api/v1/users/signout
+ * @route POST /api/v1/user/signout
  */
 export const signOut = catchAsync(async (req, res) => {
   const user = await User.findByIdAndUpdate(
@@ -265,7 +265,7 @@ export const signOut = catchAsync(async (req, res) => {
 
 /**
  * Get current user profile
- * @route GET /api/v1/users/profile
+ * @route GET /api/v1/user/profile
  */
 export const getCurrentUserProfile = catchAsync(async (req, res) => {
   return res
@@ -275,12 +275,12 @@ export const getCurrentUserProfile = catchAsync(async (req, res) => {
 
 /**
  * Update user profile
- * @route PATCH /api/v1/users/profile
+ * @route PATCH /api/v1/user/profile
  */
 export const updateUserProfile = catchAsync(async (req, res) => {
   const { name, email, bio } = req.body
 
-  const user = await User.findById(user._id)
+  const user = await User.findById(req.user._id)
 
   if (!user) {
     throw new ApiError(404, "User not found")
@@ -298,7 +298,7 @@ export const updateUserProfile = catchAsync(async (req, res) => {
     {
       new: true
     }
-  )
+  ).select(" -password -isEmailVerified  -enrolledCourses -lastActive -createdAt -updatedAt -refreshToken -__v ")
 
   return res
     .status(200)
@@ -310,20 +310,20 @@ export const updateUserProfile = catchAsync(async (req, res) => {
 
 /**
  * Change user password
- * @route PATCH /api/v1/users/password
+ * @route PATCH /api/v1/user/password
  */
 export const changeUserPassword = catchAsync(async (req, res) => {
 
-  const { oldPassword, newPassword } = req.body
+  const { currentPassword, newPassword } = req.body
 
-  const user = await User.findById(req.id).select(" +password")
+  const user = await User.findById(req.user.id).select(" +password")
 
   if (!user) {
     throw new ApiError(404, "User not found ")
   };
 
   // verify current password
-  if (!(await user.comparePassword(oldPassword))) {
+  if (!(await user.isPasswordCorrect(currentPassword))) {
     throw new ApiError(401, "Current password is invalid")
   }
 
@@ -343,7 +343,7 @@ export const changeUserPassword = catchAsync(async (req, res) => {
 
 /**
  * Request password reset
- * @route POST /api/v1/users/forgot-password
+ * @route POST /api/v1/user/forgot-password
  */
 export const forgotPassword = catchAsync(async (req, res) => {
   const { email } = req.body
@@ -353,9 +353,24 @@ export const forgotPassword = catchAsync(async (req, res) => {
   if (!user) {
     throw new ApiError(404, "User with this email not found")
   };
-
-  const resetToken = user.generateTempToken();
+  const { tokenExpiry, unHashedToken, HashedToken } = user.generateTempToken();
+  user.resetPasswordToken = HashedToken;
+  user.resetPasswordExpire = tokenExpiry;
   await user.save({ validateBeforeSave: false });
+
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "We got a request to reset your password",
+      mailgenContent: forgotPasswordMailgenContent(
+        user.name,
+        `${req.protocol}://${req.get('host')}/api/v1/user/forgot-password/${unHashedToken}`
+      )
+    });
+  } catch (error) {
+    throw new ApiError(500, `Forgot password mail not sent ${error.message}`)
+  }
 
 
   return res
@@ -368,21 +383,43 @@ export const forgotPassword = catchAsync(async (req, res) => {
 
 /**
  * Reset password
- * @route POST /api/v1/users/reset-password/:token
+ * @route POST /api/v1/user/reset-password/:passwordResetUrl
  */
 export const resetPassword = catchAsync(async (req, res) => {
-  const { token } = req.params;
+  const { passwordResetUrl } = req.params;
   const { password } = req.body;
-  // get user by reset token
+
+
+  /**Debugging
+   * 
+  console.log("Incoming Token:", passwordResetUrl);
+  
+  console.log(
+    "Hashed Incoming Token:",
+    crypto.createHash("sha256")
+      .update(passwordResetUrl)
+      .digest("hex")
+  );
+  
+   * 
+   */
 
   const user = await User.findOne({
-    resetPasswordToken: crypto.createHash('sha256').update(token).digest('hex'),
+    resetPasswordToken: crypto.createHash('sha256').update(passwordResetUrl).digest('hex'),
     resetPasswordExpire: { $gt: Date.now() },
-  })
+  });
+
 
   if (!user) {
     throw new ApiError(404, "User not found")
-  }
+  };
+
+  /**Debug the issue
+     *   console.log(user.resetPasswordToken)
+     * 
+     * 
+     */
+
 
 
   user.password = password
@@ -396,9 +433,10 @@ export const resetPassword = catchAsync(async (req, res) => {
 
 });
 
+
 /**
  * Delete user account
- * @route DELETE /api/v1/users/account
+ * @route DELETE /api/v1/user/account
  */
 export const deleteUserAccount = catchAsync(async (req, res) => {
   const user = await User.findById(req.id);
@@ -455,7 +493,10 @@ export const userEmailVerification = catchAsync(async (req, res) => {
     )
 });
 
-
+/**
+ * Resend Mail verification
+ * @route POST /api/v1/user/resend-Email
+ */
 export const resendEmailVerification = catchAsync(async (req, res) => {
 
   const user = await User.findById(req.user._id);
@@ -488,12 +529,12 @@ export const resendEmailVerification = catchAsync(async (req, res) => {
     });
     console.log("Resend Email verification ✅")
   } catch (error) {
-    throw new ApiError( 500 , "Failed to send verification email..")
+    throw new ApiError(500, "Failed to send verification email..")
   };
-  return res 
+  return res
     .status(200)
     .json(
-      new ApiResponse( 200 , {} , "Verification email sent successfully.")
+      new ApiResponse(200, {}, "Verification email sent successfully.")
     )
 
 });
