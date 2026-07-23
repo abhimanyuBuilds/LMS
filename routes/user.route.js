@@ -52,17 +52,23 @@ router.patch("/profile",
     updateUserProfile) // Tested
 
 
+
+router.post("/refresh-token",
+    refreshTokenRotation)  // tested
+
+
+
 // password management
 
 router.patch("/change-password",
     validate(validatePasswordChanged),
     verifyJWT,
     changeUserPassword
-);
+); // tested
 
-router.post("/forgot-password", verifyJWT , forgotPassword)
+router.post("/forgot-password", verifyJWT , forgotPassword) // tested
 
-router.post("/reset-password/:passwordResetUrl", verifyJWT , resetPassword)
+router.post("/reset-password/:passwordResetUrl", verifyJWT , resetPassword) // tested
 
 // Account management
 
@@ -71,9 +77,6 @@ router.delete("/account",
     deleteUserAccount
 );
 
-
-router.post("/refresh-token",
-    refreshTokenRotation)
 
 export default router
 
