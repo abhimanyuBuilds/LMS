@@ -337,8 +337,7 @@ Backend Developer | Node.js | MongoDB | AWS Enthusiast
 </p>
 
 <p>
-<a href="https://github.com/your-github">GitHub</a> |
-<a href="https://linkedin.com/in/your-linkedin">LinkedIn</a>
+<a href="www.linkedin.com/in/abnalwa07">LinkedIn</a>
 </p>
 
 ---
