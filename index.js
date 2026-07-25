@@ -7,6 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
+import healthRoute from "./routes/health.route.js"
 import {apiLimiter} from "./middlewares/Auth.rateLimmter.middleware.js"
 dotenv.config()
 
@@ -46,6 +47,7 @@ app.use(
 
 app.use("/api/v1/user", UserRoute)
 
+app.use("/server-Health", healthRoute);
 
 
 // handler 404 
