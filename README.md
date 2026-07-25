@@ -328,8 +328,20 @@ Password@123
 </ul>
 
 ---
-## 👨‍💻 Author <h2>Abhimanyu Singh</h2> <h4>Software Developer @ Atthah</h4> <p> Backend Engineer specializing in scalable APIs, distributed systems, payment gateways, and cloud-native applications. </p> <p> Node.js • Express.js • MongoDB • PostgreSQL • MySQL • Python • Django • Redis • Docker • AWS </p> <p> <i>"Transforming ideas into reliable and scalable software."</i> </p> <p> <a href="https://www.linkedin.com/in/abnalwa07"> <img src="https://img.shields.io/badge/LinkedIn-Abhimanyu%20Singh-blue?style=for-the-badge&logo=linkedin"/> </a> <a href="https://github.com/your-github"> <img src="https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github"/> </a> </p> </div> --- ## ⚡ Built With <p align="center"> <img src="https://img.shields.io/badge/Node.js-24.x-green?style=for-the-badge&logo=node.js"/> <img src="https://img.shields.io/badge/Express.js-5.x-black?style=for-the-badge&logo=express"/> <img src="https://img.shields.io/badge/MongoDB-green?style=for-the-badge&logo=mongodb"/> <img src="https://img.shields.io/badge/PostgreSQL-blue?style=for-the-badge&logo=postgresql"/> <img src="https://img.shields.io/badge/MySQL-orange?style=for-the-badge&logo=mysql"/> <img src="https://img.shields.io/badge/Redis-red?style=for-the-badge&logo=redis"/> <img src="https://img.shields.io/badge/Docker-blue?style=for-the-badge&logo=docker"/> <img src="https://img.shields.io/badge/AWS-orange?style=for-the-badge&logo=amazonaws"/> <img src="https://img.shields.io/badge/JWT-Authentication-orange?style=for-the-badge"/> <img src="https://img.shields.io/badge/Stripe-Payment-purple?style=for-the-badge&logo=stripe"/> <img src="https://img.shields.io/badge/Razorpay-Payment-blue?style=for-the-badge"/> <img src="https://img.shields.io/badge/Cloudinary-Media-red?style=for-the-badge"/> <img src="https://img.shields.io/badge/Jest-Testing-red?style=for-the-badge&logo=jest"/> </p> --- <p align="center"> <img src="./assets/architecture.png" width="900"/> </p> <p align="center"> <b>Production-Ready Backend Architecture</b> </p>
 
+<h2>👨‍💻 Author</h2>
 
+<p>
+<b>Abhimanyu Singh</b><br>
+Software Developer @ Atthah | Node.js | MongoDB | PostgreSQL | Mysql | Python | Django | Redis | Docker |AWS Enthusiast
+</p>
 
-<div align="center"> ### ⭐ Support the Project If this repository helped you learn something new, consider giving it a star! <a href="https://github.com/your-username/your-repo"> <img src="https://img.shields.io/badge/STAR_THIS_REPOSITORY-yellow?style=for-the-badge&logo=github"/> </a> <br><br> Made with ❤️ by <b>Abhimanyu Singh</b> </div>
+<p>
+<a href="www.linkedin.com/in/abnalwa07">LinkedIn</a>
+</p>
+
+---
+
+<h2 align="center">
+⭐ If you found this project useful, don't forget to star the repository!
+</h2>
