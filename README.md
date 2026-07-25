@@ -331,17 +331,20 @@ Password@123
 
 <h2>👨‍💻 Author</h2>
 
-<p>
+
 <b>Abhimanyu Singh</b><br>
-Software Developer @ Atthah | Node.js | MongoDB | PostgreSQL | Mysql | Python | Django | Redis | Docker |AWS Enthusiast
-</p>
+<h3>Software Developer @ Atthah</h4>
 
 <p>
-<a href="www.linkedin.com/in/abnalwa07">LinkedIn</a>
+| Node.js | MongoDB | PostgreSQL | Mysql | Python | Django | Redis | Docker |AWS Enthusiast
 </p>
+
 
 ---
 
 <h2 align="center">
 ⭐ If you found this project useful, don't forget to star the repository!
 </h2>
+
+Made with ❤️ by <b>Abhimanyu Singh</b>
+
