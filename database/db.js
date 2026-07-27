@@ -13,7 +13,7 @@ class DataBaseConnection {
 
         mongoose.set('strictQuery', true)
 
-        // Handle connection event
+        // register a new event
 
 
         mongoose.connection.on('connected', () => {
@@ -42,16 +42,14 @@ class DataBaseConnection {
             }
 
             const connectionOption = {
-                // useNewUrlParser: true,
-                // useUnifiedTopology: true,
                 maxPoolSize: 10,
-                serverSelectionTimeoutMs: 5000,
-                socketTimeoutMs: 45000,
+                serverSelectionTimeoutMs: 5000, // wait 5 second to find mongoDB
+                socketTimeoutMs: 45000, // wait 45 sec before killing inactive socket
                 family: 4 // use ipv4
             }
 
             if (process.env.NODE_ENV === 'development') {
-                mongoose.set('debug', true)
+                mongoose.set('debug', true) // here i'm accepting debugging console
             }
 
             console.log(`${process.env.MONGODB_URI} is a DB uri`)

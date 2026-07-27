@@ -8,7 +8,7 @@ import helmet from "helmet";
 import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
 import healthRoute from "./routes/health.route.js"
-import {apiLimiter} from "./middlewares/Auth.rateLimmter.middleware.js"
+import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
 dotenv.config()
 
 const app = express()
@@ -19,7 +19,7 @@ app.use(express.json({ limit: "10kb" })); // Body limit is 10kb
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
 
-app.use("/api" , apiLimiter)
+app.use("/api", apiLimiter)
 
 
 const morganFormat = ":method :url :status :response-time ms";
@@ -45,9 +45,11 @@ app.use(
 );
 
 
-app.use("/api/v1/user", UserRoute)
+app.use("/api/v1/user", UserRoute);
 
 app.use("/server-Health", healthRoute);
+
+
 
 
 // handler 404 
