@@ -86,12 +86,39 @@ export const initiateStripeCheckout = catchAsync(async (req, res) => {
  */
 export const handleStripeWebhook = catchAsync(async (req, res) => {
   
+}); 
 
 /**
  * Get course details with purchase status
  * @route GET /api/v1/payments/courses/:courseId/purchase-status
  */
 export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
+  const { courseId } = req.params 
+
+  const course = await Course.findById(courseId)
+    .populate('creator', 'name avatar')
+    .populate('lectures' , 'lectureTitle videoUrl duration');
+
+  if(!course){
+    throw new ApiError( 404 , "Course not found")
+  };
+
+  // check if user has purchased the course..
+
+  const course = CoursePurchase.exists({
+    user: req.id,
+    course: courseId,
+    status: 'completed'
+  });
+
+  res.status(200)
+    .json({
+      success: true ,
+      data: {
+        course, 
+        isPurchased: Boolean(purchased)
+      },
+    });
 });
 
 /**
@@ -99,4 +126,21 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
  * @route GET /api/v1/payments/purchased-courses
  */
 export const getPurchasedCourses = catchAsync(async (req, res) => {
+  const purchases = await CoursePurchase.find({
+    userId: req.id,
+    status: "completed",
+  }).populate({
+    path: "courseId",
+    select: "courseTitle courseThumbnail courseDescription category",
+    populate:{
+      path: "creator",
+      select: "name avatar",
+    },
+  });
+
+  res.status(200)
+    .json({
+      success: true ,
+      data: purchases.map((purchase) => purchase.courseId),
+    });
 });

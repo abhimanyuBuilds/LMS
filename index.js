@@ -1,5 +1,5 @@
-import express from "express"
 import dotenv from "dotenv"
+import express from "express"
 import logger from "./services/logger.js"
 import morgan from "morgan"
 import cookieParser from "cookie-parser";
@@ -9,7 +9,11 @@ import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
 import healthRoute from "./routes/health.route.js"
 import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
+
+
+// load the env 
 dotenv.config()
+
 
 const app = express()
 const PORT = process.env.PORT

@@ -1,3 +1,5 @@
+import dotenv from "dotenv"
+dotenv.config()
 import mongoose, { get } from "mongoose"
 const MAX_RETRY = 3;
 const RETRY_INTERVAL = 5000;
@@ -54,6 +56,7 @@ class DataBaseConnection {
 
             console.log(`${process.env.MONGODB_URI} is a DB uri`)
             await mongoose.connect(process.env.MONGODB_URI, connectionOption)
+            
             this.retryCount = 0 // reset retry count on successful connection
         } catch (error) {
             console.error("Failed to connect to mongoDB", error.message)

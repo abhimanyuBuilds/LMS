@@ -40,3 +40,19 @@ export const restrictTo = (...roles) => {
         next();
     });
 };
+
+
+
+export const optionalAuth = catchAsync(async (req, res, next) => {
+  try {
+    const token = req.cookies.token;
+    if (token) {
+      const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+      req.id = decoded.userId;
+    }
+    next();
+  } catch (error) {
+    // If token is invalid, just continue without authentication
+    next();
+  }
+});
