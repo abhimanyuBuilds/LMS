@@ -31,10 +31,11 @@ export const createNewCourse = catchAsync(async (req, res) => {
     title,
     subtitle,
     description,
+    thumbnail,
     category,
     level,
     price,
-    instructor: req.id
+    instructor: req.user.id
   })
 
   if (!course) {
@@ -43,7 +44,7 @@ export const createNewCourse = catchAsync(async (req, res) => {
 
 
   await User.findByIdAndUpdate(
-    req.id, {
+    req.user._id, {
     $addToSet: { createdCourse: course._id }
   },
     {
@@ -54,7 +55,7 @@ export const createNewCourse = catchAsync(async (req, res) => {
 
   return res
     .status(201)
-    .json(new ApiResonse(201, { data: course }, "course created successfully."))
+    .json(new ApiResponse(201, { data: course }, "course created successfully."))
 
 
 });

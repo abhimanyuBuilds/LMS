@@ -82,7 +82,7 @@ export const initiateStripeCheckout = catchAsync(async (req, res) => {
 
 /**
  * Handle Stripe webhook events
- * @route POST /api/v1/payments/webhook
+ * @route POST /api/v1/payments/webhook❌
  */
 export const handleStripeWebhook = catchAsync(async (req, res) => {
   

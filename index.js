@@ -7,6 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 import connectDB from "./database/db.js"
 import UserRoute from "./routes/user.route.js"
+import courseRoute from "./routes/course.route.js"
 import healthRoute from "./routes/health.route.js"
 import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
 
@@ -50,6 +51,7 @@ app.use(
 
 
 app.use("/api/v1/user", UserRoute);
+app.use("/api/v1/course",courseRoute)
 
 app.use("/server-Health", healthRoute);
 

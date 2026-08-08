@@ -1,10 +1,10 @@
 import multer from "multer"
 
 const storage = multer.diskStorage({
-    destination: function (req , res , cb){
-        cb(null , `../upload`)
+    destination: function (req , file , cb){
+        cb(null , `./src/upload`)
     },
-    filename: function(req , res , cb){
+    filename: function(req , file  , cb){
         cb(null , `${Date.now()}-${file.originalname}`)
     },
 });
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
 export const upload = multer({
     storage , 
-    limit: {
-        fileSize: 8 * 1000  * 1000 // 8mb
-    }
-})
+    limits: {
+        fileSize: 8 * 1000  * 1000, // 8mb
+    },
+});

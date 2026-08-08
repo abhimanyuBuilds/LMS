@@ -79,11 +79,10 @@ courseSchema.virtual('averageRating').get(function(){
 });
 
 // Update total lectures count when lectures are modified
-courseSchema.pre('save', function(next){
+courseSchema.pre('save', function(){
     if(this.lectures){
         this.totalLectures = this.lectures.length;
     }
-    next();
 });
 
 export const Course = mongoose.model("Course", courseSchema);
