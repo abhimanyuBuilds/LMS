@@ -115,7 +115,7 @@ export const searchCourses = catchAsync(async (req, res) => {
 
   const courses = await Course.find(searchCriteria)
     .populate({
-      path: "instructor",
+      path: "Instructor",
       select: " name avatar "
     })
     .sort(sortOptions)
@@ -174,7 +174,7 @@ export const getPublishedCourses = catchAsync(async (req, res) => {
  */
 
 export const getMyCreatedCourses = catchAsync(async (req, res) => {
-  const courses = await Course.find({ instructor: req.id }).populate({
+  const courses = await Course.find({ instructor: req.user.id }).populate({
     path: "enrolledStudents",
     select: "name avatar",
   });
@@ -203,8 +203,11 @@ export const updateCourseDetails = catchAsync(async (req, res) => {
   }
 
   // verify ownerShip 
+  console.log(course)
+  console.log(req.user.id)
+  console.log(course.instructor)
 
-  if (!course.instructor.toString() !== req.id) {
+  if (course.instructor.toString() !== req.user.id) {
     throw new ApiError("Not Authorized to update this course")
   };
 
@@ -269,7 +272,7 @@ export const getCourseDetails = catchAsync(async (req, res) => {
     .json({
       success: true,
       data: {
-        ...course.toString(),
+        ...course.toJSON(),
         averageRating: course.averageRating,
       },
     });
@@ -289,7 +292,7 @@ export const addLectureToCourse = catchAsync(async (req, res) => {
     throw new ApiError(404, "Corse not found")
   };
 
-  if (course.instructor.toString() !== req.id) {
+  if (course.instructor.toString() !== req.user.id) {
     throw new ApiError(403, "Not Authorized to update this course..")
   };
 
@@ -303,12 +306,14 @@ export const addLectureToCourse = catchAsync(async (req, res) => {
   if (!result) {
     throw new ApiError(400, "Error uploading video")
   };
+  console.log("+ order:", course.lectures.length + 1)
+  console.log(" - order:", course.lectures.length + 1)
 
   const lecture = await Lecture.create({
     title,
     description,
     isPreview,
-    order: course.leactures.length + 1,
+    order: course.lectures.length + 1,
     videoUrl: result?.secure_url || req.file.path,
     publicId: result?.secure_url || req.file.path,
     duration: result?.duration || 0,
@@ -317,7 +322,7 @@ export const addLectureToCourse = catchAsync(async (req, res) => {
   // add lecture to course 
 
   course.lectures.push(lecture._id);
-  await courses.save()
+  await course.save()
 
   return res
     .status(200)
@@ -333,7 +338,8 @@ export const addLectureToCourse = catchAsync(async (req, res) => {
  * @route GET /api/v1/courses/:courseId/lectures
  */
 export const getCourseLectures = catchAsync(async (req, res) => {
-  const course = await Course.findById(req.params, courseId).populate({
+  const { courseId } = req.params
+  const course = await Course.findById(courseId).populate({
     path: "lectures",
     select: "title description videoUrl duration isPreview order",
     options: { sort: { order: 1 } }
@@ -343,8 +349,8 @@ export const getCourseLectures = catchAsync(async (req, res) => {
     throw new ApiError(404, "course not found")
   };
 
-  const isEnrolled = course.enrolledStudents.includes(req.id);
-  const isInstructor = course.instructor.toString() === req.id;
+  const isEnrolled = course.enrolledStudents.includes(req.user.id);
+  const isInstructor = course.instructor.toString() === req.user.id;
 
   let lectures = course.lectures;
   if (!isEnrolled && !isInstructor) {

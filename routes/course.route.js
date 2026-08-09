@@ -20,8 +20,8 @@ router.use(verifyJWT);
 // Get published courses
 
 
-router.get("/Published", getPublishedCourses);
-router.get("/search", searchCourses);
+router.get("/Published", getPublishedCourses); // tested ✅
+router.get("/search", searchCourses); // tested ✅
 
 
 
@@ -33,17 +33,17 @@ router.get("/search", searchCourses);
 
 router
     .route("/")
-    .post(restrictTo('Instructor'), upload.single('thumbnail'), createNewCourse)
-    .get(restrictTo('Instructor'), getMyCreatedCourses);
+    .post(restrictTo('Instructor'), upload.single('thumbnail'), createNewCourse) // ✅
+    .get(restrictTo('Instructor'), getMyCreatedCourses);  // Tested ✅
 
 
 // course details and update 
 
 
 router
-    .route('/c/:courseId')
-    .get(getCourseDetails)
-    .patch(restrictTo('Instructor'), upload.single('thumbnail'), updateCourseDetails);
+    .route('/c/:courseId') 
+    .get(getCourseDetails) // tested ✅
+    .patch(restrictTo('Instructor'), upload.single('thumbnail'), updateCourseDetails); // Tested✅ 
 
 
 
@@ -51,9 +51,9 @@ router
 
 
 router
-    .route("/c/courseId/:leactures")
-    .get(getCourseLectures)
-    .post(restrictTo('Instructor'), upload.single("video"), addLectureToCourse);
+    .route("/c/:courseId/lectures")
+    .get(getCourseLectures) // Tested ✅
+    .post(restrictTo('Instructor'), upload.single("video"), addLectureToCourse);  // tested ✅
 
 
 
