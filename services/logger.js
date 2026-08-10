@@ -21,7 +21,7 @@ const transportResponses = new DailyRotateFile({
     filename: "app-%DATE%.log",
     datePattern: "YYYY-MM-DD-HH-mm",
     zippedArchive: false,
-    maxSize: "1mb",
+    maxSize: "10mb",
     maxFiles: "1"
 })
 

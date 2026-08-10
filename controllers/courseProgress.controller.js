@@ -10,18 +10,18 @@ import { ApiError } from "../utils/ApiError.js";
 export const getUserCourseProgress = catchAsync(async (req, res) => {
   const { courseId } = req.params;
 
-  const courseDetail = await Course.findById(courseId)
+  const courseDetails = await Course.findById(courseId)
     .populate("lectures")
-    .select("title thumbnail lectures");
+    .select("courseTitle courseThumbnail lectures");
 
-  if (!courseDetail) {
+  if (!courseDetails) {
     throw new ApiError(404, "Course not found")
   };
 
 
   const courseProgress = await CourseProgress.findOne({
     course: courseId,
-    user: req.id,
+    user: req.user.id,
   }).populate("course");
 
   if (!courseProgress) {
@@ -67,12 +67,12 @@ export const updateLectureProgress = catchAsync(async (req, res) => {
 
   let courseProgress = await CourseProgress.findOne({
     course: courseId ,
-    user: req.id
+    user: req.user.d
   });
 
   if(!courseProgress){
     courseProgress = await CourseProgress.create({
-      user: req.id,
+      user: req.user.id,
       course: courseId,
       isCompleted: false,
       lectureProgress: []
@@ -120,7 +120,7 @@ export const markCourseAsCompleted = catchAsync(async (req, res) => {
 
   const courseProgress = await CourseProgress.findOne({
     course: courseId,
-    user: req.id,
+    user: req.user.id,
   });
 
   if (!courseProgress) {
@@ -155,10 +155,11 @@ export const markCourseAsCompleted = catchAsync(async (req, res) => {
 export const resetCourseProgress = catchAsync(async (req, res) => {
   const { courseId } = req.params;
 
-  const courseProgress = await courseProgress.findOne({
+  const courseProgress = await CourseProgress.findOne({
     course: courseId,
-    user: req.id
+    user: req.user.id
   });
+  // console.log(courseProgress)
 
   if (!courseProgress) {
     throw new ApiError(404, "course not found")
@@ -174,6 +175,7 @@ export const resetCourseProgress = catchAsync(async (req, res) => {
   courseProgress.isCompleted = false;
 
   await courseProgress.save()
+  // console.log(courseProgress)
 
   res.status(200)
     .json({

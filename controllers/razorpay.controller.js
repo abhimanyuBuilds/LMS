@@ -19,6 +19,8 @@ export const createRazorpayOrder = async (req, res) => {
     const userId = req.id;
     const { courseId } = req.body;
 
+   
+
 
     const course = await Course.findById(courseId);
     if (!course) {
@@ -42,17 +44,19 @@ export const createRazorpayOrder = async (req, res) => {
     const options = {
       amount: course.price * 100, //in paise
       currency: "INR",
-      receipt: `course_${courseId}`,
+      receipt: `course_${courseId}_${userId}_${Date.now()}`,
       notes: {
-        courseId: courseId,
-        userId: userId,
+        courseId: courseId.toString(),
+        userId: userId.toString(),
       },
     };
 
 
     const order = await razorpay.orders.create(options);
 
+// storing razorpay order id
     newCoursePurchase.paymentId = order.id;
+    // saving the purchase
     await newCoursePurchase.save();
 
 
@@ -66,7 +70,7 @@ export const createRazorpayOrder = async (req, res) => {
       }
     });
   } catch (error) {
-    console.error("Error creating RazorPay order.", Error);
+    console.error("Error creating RazorPay order.", error);
     res
       .status(500)
       .json({
@@ -85,7 +89,7 @@ export const verifyPayment = async (req, res) => {
 
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
-      .createHash("sha256", process.env.razorpay_payment_id)
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(body.toString())
       .digest('hex');
 

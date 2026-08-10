@@ -85,22 +85,71 @@ export const initiateStripeCheckout = catchAsync(async (req, res) => {
  * @route POST /api/v1/payments/webhook❌
  */
 export const handleStripeWebhook = catchAsync(async (req, res) => {
-  
-}); 
+  let event
+  try {
+    const payloadString = JSON.stringify(req.body, null, 2);
+    const secret = process.env.STRIPE_WEBHOOKS_SECRET;
+
+  const header = stripe.webhooks.generateTestHeaderString({
+    payload: payloadString,
+    secret,
+  });
+
+
+  event = stripe.webhooks.contructEvent(payloadString , header , secret)
+  } catch (error) {
+    throw new ApiError(`Webhook error :${error.message}, 400`);
+  }
+
+
+
+  if(event.type === "checkout.session.completed"){
+    const session  = event.data.object;
+
+    // finding and update purchased course
+
+
+    const purchase = await CoursePurchase.findOne({
+      paymentId: session.id,
+    }).populate('course');
+
+    if(!purchase){
+      throw new ApiError(404 , "Purchase record not found.")
+    };
+
+    //update purchase details
+
+    purchase.amount = session.amount_total
+      ? session.amount_total / 100
+      : purchase.amount;
+    purchase.status = 'completed'
+    await purchase.save()
+
+    // make all lecture accessable 
+
+    if(purchase.course?.lecture?.length > 0 ){
+      await Lecture.updateMany(
+        {_id: {$iin : purchase.course.length}},
+        {$set: {isPreviewFree: true}}
+      )
+    }
+
+  }
+});
 
 /**
  * Get course details with purchase status
  * @route GET /api/v1/payments/courses/:courseId/purchase-status
  */
 export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
-  const { courseId } = req.params 
+  const { courseId } = req.params
 
   const course = await Course.findById(courseId)
     .populate('creator', 'name avatar')
-    .populate('lectures' , 'lectureTitle videoUrl duration');
+    .populate('lectures', 'lectureTitle videoUrl duration');
 
-  if(!course){
-    throw new ApiError( 404 , "Course not found")
+  if (!course) {
+    throw new ApiError(404, "Course not found")
   };
 
   // check if user has purchased the course..
@@ -113,9 +162,9 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
 
   res.status(200)
     .json({
-      success: true ,
+      success: true,
       data: {
-        course, 
+        course,
         isPurchased: Boolean(purchased)
       },
     });
@@ -132,7 +181,7 @@ export const getPurchasedCourses = catchAsync(async (req, res) => {
   }).populate({
     path: "courseId",
     select: "courseTitle courseThumbnail courseDescription category",
-    populate:{
+    populate: {
       path: "creator",
       select: "name avatar",
     },
@@ -140,7 +189,7 @@ export const getPurchasedCourses = catchAsync(async (req, res) => {
 
   res.status(200)
     .json({
-      success: true ,
+      success: true,
       data: purchases.map((purchase) => purchase.courseId),
     });
 });
