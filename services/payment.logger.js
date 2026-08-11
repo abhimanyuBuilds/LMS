@@ -13,7 +13,7 @@ const paymentLogger = winston.createLogger({
 
     transports: [
         new DailyRotateFile({
-            filename: "logs/Payments/payment-%DATE%.log",
+            filename: "Paymentlogs/logs/payment-%DATE%.log",
             datePattern: "YYYY-MM-DD",
             maxFiles: "30d",
             zippedArchive: false
