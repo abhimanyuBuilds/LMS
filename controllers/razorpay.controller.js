@@ -45,7 +45,7 @@ export const createRazorpayOrder = async (req, res) => {
     const options = {
       amount: course.price * 100, //in paise
       currency: "INR",
-      receipt: `course_${courseId}${Date.now()}`,
+      receipt: `course_${courseId}-${Date.now()}`,
       notes: {
         courseId: courseId,
         userId: userId,
@@ -106,7 +106,7 @@ export const verifyPayment = async (req, res) => {
     const isAuthentic = expectedSignature === razorpay_signature;
 
 /**Debug
-console.log("========== RAZORPAY VERIFY ==========");
+  console.log("========== RAZORPAY VERIFY ==========");
 console.log("Order ID:", razorpay_order_id);
 console.log("Payment ID:", razorpay_payment_id);
 console.log("Received Signature:", razorpay_signature);
@@ -132,6 +132,24 @@ console.log("======================================");
     await purchase.save();
 
 if(purchase.status === "completed"){
+  
+    try {
+      await sendEmail({
+        email:  req.user.email,
+        subject: "You’re in! Start your course today",
+        mailgenContent: PurchasedCourseMailgenContent(
+          req.user.name ,
+
+        )
+      });
+      console.log("REQ.email:", req.user.email)
+      console.log("Mail sent successfully.🎊")
+    } catch (error) {
+      console.log("Mail failed to send ")
+      console.error("error", error)
+      throw error
+    }
+
     res.status(200)
       .json({
         success: true,
@@ -152,22 +170,3 @@ if(purchase.status === "completed"){
 };
 
 
-
-/**
-
-    try {
-      await sendEmail({
-        email:  req.user.email,
-        subject: "You’re in! Start your course today",
-        mailgenContent: PurchasedCourseMailgenContent(
-          req.user.name ,
-
-        )
-      });
-      console.log("REQ.email:", req.user.email)
-      console.log("Mail sent successfully.🎊")
-    } catch (error) {
-      console.log("Mail failed to send ")
-      console.error("error", error)
-      throw error
-    } */
