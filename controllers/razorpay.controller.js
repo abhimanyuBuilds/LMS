@@ -52,7 +52,7 @@ export const createRazorpayOrder = async (req, res) => {
 
     logPayments({
       userId: req.user.id,
-      courseId: course.courseId,
+      courseId: course._id,
       orderId: order.id,
       paymentId: null,
       amount: course.price,
@@ -135,7 +135,7 @@ export const verifyPayment = async (req, res) => {
         amount: null,
         currency: "INR",
         status: "failed",
-        verificationTime: new Date.now().toISOString(),
+        verificationTime:Date.now(),
         failureReason: "Invalid RazorPay signature"
       });
 
@@ -165,10 +165,10 @@ export const verifyPayment = async (req, res) => {
 
       logPayments({
         userId: req.user.id,
-        courseId: null,
+        courseId: purchase.course,
         orderId: razorpay_order_id,
         paymentId: razorpay_payment_id,
-        amount: null,
+        amount: purchase.amount,
         currency: "INR",
         status: "failed",
         verificationTime: Date.now(),

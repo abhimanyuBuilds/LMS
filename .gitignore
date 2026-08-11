@@ -2,3 +2,17 @@ node_modules
 .env
 dist/
 package-lock.json
+tempCodeRunnerFile.js
+.57001fa57f6ef87fff56171c2d98571a28311b10-audit.json
+
+feature.md
+
+
+
+# Application logs
+logs/
+Paymentlogs/
+*.log
+frontend
+
+

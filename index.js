@@ -52,6 +52,9 @@ app.use(
 );
 
 
+
+
+
 app.use("/api/v1/user", UserRoute);
 app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/progress", courseProgress);
