@@ -10,6 +10,7 @@ import UserRoute from "./routes/user.route.js"
 import courseRoute from "./routes/course.route.js"
 import courseProgress from "./routes/courseProgress.route.js"
 import healthRoute from "./routes/health.route.js"
+import razorPayRoute from "./routes/razorPay.route.js"
 import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
 
 
@@ -54,7 +55,7 @@ app.use(
 app.use("/api/v1/user", UserRoute);
 app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/progress", courseProgress);
-
+app.use("/api/v1/razorpay",razorPayRoute)
 app.use("/server-Health", healthRoute);
 
 

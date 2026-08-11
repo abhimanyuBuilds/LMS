@@ -4,8 +4,8 @@ import Razorpay from "razorpay";
 import crypto from "crypto";
 import { Course } from "../models/course.model.js";
 import { CoursePurchase } from "../models/coursePurchase.model.js";
+import { PurchasedCourseMailgenContent , sendEmail } from "../services/sendMail.js"
 import { ApiError } from "../utils/ApiError.js";
-import API from "razorpay/dist/types/api.js";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -16,10 +16,10 @@ const razorpay = new Razorpay({
 
 export const createRazorpayOrder = async (req, res) => {
   try {
-    const userId = req.id;
+    const userId = req.user.id;
     const { courseId } = req.body;
 
-   
+
 
 
     const course = await Course.findById(courseId);
@@ -34,6 +34,7 @@ export const createRazorpayOrder = async (req, res) => {
       course: courseId,
       user: userId,
       amount: course.price,
+      currency: "INR",
       status: "pending",
       paymentMethod: "razorpay",
     });
@@ -44,17 +45,17 @@ export const createRazorpayOrder = async (req, res) => {
     const options = {
       amount: course.price * 100, //in paise
       currency: "INR",
-      receipt: `course_${courseId}_${userId}_${Date.now()}`,
+      receipt: `course_${courseId}${Date.now()}`,
       notes: {
-        courseId: courseId.toString(),
-        userId: userId.toString(),
+        courseId: courseId,
+        userId: userId,
       },
     };
 
 
     const order = await razorpay.orders.create(options);
 
-// storing razorpay order id
+    // storing razorpay order id
     newCoursePurchase.paymentId = order.id;
     // saving the purchase
     await newCoursePurchase.save();
@@ -62,7 +63,7 @@ export const createRazorpayOrder = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      orders,
+      order,
       course: {
         name: course.title,
         description: course.description,
@@ -84,7 +85,16 @@ export const verifyPayment = async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
       req.body;
 
-
+ if (
+      !razorpay_order_id ||
+      !razorpay_payment_id ||
+      !razorpay_signature
+    ) {
+      throw new ApiError(
+        400,
+        "razorpay_order_id, razorpay_payment_id and razorpay_signature are required"
+      );
+    }
     // verify payment signature
 
     const body = razorpay_order_id + "|" + razorpay_payment_id;
@@ -94,6 +104,16 @@ export const verifyPayment = async (req, res) => {
       .digest('hex');
 
     const isAuthentic = expectedSignature === razorpay_signature;
+
+/**Debug
+console.log("========== RAZORPAY VERIFY ==========");
+console.log("Order ID:", razorpay_order_id);
+console.log("Payment ID:", razorpay_payment_id);
+console.log("Received Signature:", razorpay_signature);
+console.log("Expected Signature:", expectedSignature);
+console.log("Secret exists:", !!process.env.RAZORPAY_KEY_SECRET);
+console.log("======================================");
+*/  
 
 
     if (!isAuthentic) {
@@ -111,13 +131,14 @@ export const verifyPayment = async (req, res) => {
     purchase.status = "completed";
     await purchase.save();
 
-
+if(purchase.status === "completed"){
     res.status(200)
       .json({
         success: true,
         message: "Payment verified Successfully.",
-        courseId: purchase.courseId
+        courseId: purchase.course
       });
+    };
   } catch (error) {
     console.error("Error verifying payment", error);
     res
@@ -129,3 +150,24 @@ export const verifyPayment = async (req, res) => {
   }
 
 };
+
+
+
+/**
+
+    try {
+      await sendEmail({
+        email:  req.user.email,
+        subject: "You’re in! Start your course today",
+        mailgenContent: PurchasedCourseMailgenContent(
+          req.user.name ,
+
+        )
+      });
+      console.log("REQ.email:", req.user.email)
+      console.log("Mail sent successfully.🎊")
+    } catch (error) {
+      console.log("Mail failed to send ")
+      console.error("error", error)
+      throw error
+    } */
