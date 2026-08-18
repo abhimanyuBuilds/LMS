@@ -156,7 +156,7 @@ export const getPublishedCourses = catchAsync(async (req, res) => {
   return res
     .status(200)
     .json({
-      sucess: true,
+      success: true,
       data: courses,
       pagination: {
         page,
