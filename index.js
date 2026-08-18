@@ -13,7 +13,8 @@ import healthRoute from "./routes/health.route.js"
 import purchaseRoute from "./routes/purchaseCourse.route.js"
 import razorPayRoute from "./routes/razorPay.route.js"
 import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
-
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./utils/swagger.js";
 
 // load the env 
 dotenv.config()
@@ -21,6 +22,14 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT
+
+
+
+app.use(
+    "/LAMS",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec)
+);
 
 // parse the webhook body
 
