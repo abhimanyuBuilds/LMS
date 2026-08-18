@@ -1,0 +1,3917 @@
+{
+  "info": {
+    "_postman_id": "97d414b3-c423-419f-99b8-eeb538e0ee67",
+    "name": "LAMS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51371746",
+    "_collection_link": "https://go.postman.co/collection/51371746-97d414b3-c423-419f-99b8-eeb538e0ee67?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth-service",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyu33@gmail.com\",\r\n    \"password\":\"1pi@7872992812#\",\r\n    \"role\": \"student\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/v1/user/signUp",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signUp"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyusingh703@gmail.com\",\r\n    \"password\":\"1iP@jaatabhi\"\r\n    // \"role\": \"Student\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/signUp",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "signUp"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "393"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"189-tYxE+KZ127G00cImOQbxX+BNoIo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Jul 2026 06:13:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6a5f0e0bc0130b71dccfc77f\",\n            \"name\": \"Abhimanyu Singh\",\n            \"email\": \"abhimanyusingh703@gmail.com\",\n            \"role\": \"Student\",\n            \"avatar\": \"default-avatar.png\",\n            \"createdCourses\": [],\n            \"enrolledCourses\": [],\n            \"lastActive\": \"2026-07-21T06:13:31.104Z\",\n            \"createdAt\": \"2026-07-21T06:13:31.110Z\",\n            \"updatedAt\": \"2026-07-21T06:13:31.110Z\",\n            \"__v\": 0,\n            \"id\": \"6a5f0e0bc0130b71dccfc77f\"\n        }\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyusingh703@gmail.com\",\r\n    \"password\":\"1iP@jaatabhi\",\r\n    \"role\": \"student\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/signUp",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "signUp"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "254"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fe-nZWPHN3u09DF3L086jiutMWDWc8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 09:26:30 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6a608cc2c9a54bbd5cd32a83\",\n            \"name\": \"Abhimanyu Singh\",\n            \"isEmailVerified\": \"false\",\n            \"role\": \"student\",\n            \"avatar\": \"default-avatar.png\",\n            \"lastActive\": \"2026-07-22T09:26:26.495Z\",\n            \"id\": \"6a608cc2c9a54bbd5cd32a83\"\n        }\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyusingh703@gmail.com\",\r\n    \"password\":\"1iP@jaatabhi\",\r\n    \"role\": \"student\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/signUp",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "signUp"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"5-in-10min\"; q=5; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "1"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "810"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"5-in-10min\"; r=4; t=600"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "254"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"fe-/2BkXPopxIWiQu5uokGLaLeyYHU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 10:44:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n            \"name\": \"Abhimanyu Singh\",\n            \"isEmailVerified\": \"false\",\n            \"role\": \"student\",\n            \"avatar\": \"default-avatar.png\",\n            \"lastActive\": \"2026-07-22T10:44:14.567Z\",\n            \"id\": \"6a609efea8ee7e28ff3bff6f\"\n        }\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "if (response.data?.accessToken) {\r",
+                  "    pm.environment.set(\"accessToken\", response.data.accessToken);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\": \"abhimanyu33@gmail.com\",\r\n    \"password\": \"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/singIn",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "singIn"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyusingh703@gmail.com\",\r\n    \"password\":\"1iP@jaatabhi\"\r\n    // \"role\": \"Student\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/singIn",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "singIn"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTVmMGUwYmMwMTMwYjcxZGNjZmM3N2YiLCJyb2xlIjoiU3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ2MTY0NjcsImV4cCI6MTc4NDYxNzM2N30.vr9Eu_d7E2G-qFHFbsL7_zgPSqyWeDXfL6VfYK1J9Ls; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTVmMGUwYmMwMTMwYjcxZGNjZmM3N2YiLCJyb2xlIjoiU3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ2MTY0NjcsImV4cCI6MTc4NTkxMjQ2N30.qlD0BCUQGl4yBYXsuAdkcYypinzMes7PRVDXLoMv_tM; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "670"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"29e-BtwHxonhb17jVXOTeYe9C3C84tg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 21 Jul 2026 06:47:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"loggedInUser\": {\n            \"_id\": \"6a5f0e0bc0130b71dccfc77f\",\n            \"name\": \"Abhimanyu Singh\",\n            \"avatar\": \"default-avatar.png\",\n            \"id\": \"6a5f0e0bc0130b71dccfc77f\"\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTVmMGUwYmMwMTMwYjcxZGNjZmM3N2YiLCJyb2xlIjoiU3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ2MTY0NjcsImV4cCI6MTc4NDYxNzM2N30.vr9Eu_d7E2G-qFHFbsL7_zgPSqyWeDXfL6VfYK1J9Ls\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTVmMGUwYmMwMTMwYjcxZGNjZmM3N2YiLCJyb2xlIjoiU3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ2MTY0NjcsImV4cCI6MTc4NTkxMjQ2N30.qlD0BCUQGl4yBYXsuAdkcYypinzMes7PRVDXLoMv_tM\"\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyusingh703@gmail.com\",\r\n    \"password\":\"1iP@jaatabhi\"\r\n    // \"role\": \"Student\"\r\n}\r\n\r\n\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/singIn",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "singIn"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "\"5-in-10min\"; q=5; w=600; pk=:YmIwY2Q1MTM2YWU1:"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "8"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "896"
+                },
+                {
+                  "key": "RateLimit",
+                  "value": "\"5-in-10min\"; r=4; t=600"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ3MTg4NzYsImV4cCI6MTc4NDcxOTc3Nn0.sSnHZu3iIUZnOGkLjALYiIGQRf6A-KdUSi60ofvMFeU; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ3MTg4NzYsImV4cCI6MTc4NjAxNDg3Nn0.noNhqT-ndDfd7spcDEJyH7cjL5RFF9QBMDxXrRABRuw; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "841"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"349-iPO2wRlkgGYBQ3Ozn9vU3O83VWI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 11:14:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"loggedInUser\": {\n            \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n            \"name\": \"Abhimanyu Singh\",\n            \"isEmailVerified\": \"false\",\n            \"avatar\": \"default-avatar.png\",\n            \"EmailVerificationExpiry\": \"2026-07-22T10:49:14.970Z\",\n            \"EmailVerificationToken\": \"8eae3edcf8e4e48d187464ecf18e02789e9fa962f63f6474e5756e2a83dbed8e\",\n            \"id\": \"6a609efea8ee7e28ff3bff6f\"\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ3MTg4NzYsImV4cCI6MTc4NDcxOTc3Nn0.sSnHZu3iIUZnOGkLjALYiIGQRf6A-KdUSi60ofvMFeU\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpbWFueXUgU2luZ2giLCJpYXQiOjE3ODQ3MTg4NzYsImV4cCI6MTc4NjAxNDg3Nn0.noNhqT-ndDfd7spcDEJyH7cjL5RFF9QBMDxXrRABRuw\"\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Refresh Rotation token",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/v1/user/refresh-token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "refresh-token"
+              ]
+            },
+            "description": "Refresh Rotation token"
+          },
+          "response": [
+            {
+              "name": "Refresh Rotation token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/refresh-token",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "refresh-token"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "7"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "887"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpIiwiaWF0IjoxNzg0ODA3NzkxLCJleHAiOjE3ODQ4MDg2OTF9.Dl3wXHCRmlPEF06IYCmHjg3g0uq9vs0Nwkkmm5tktDA; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpIiwiaWF0IjoxNzg0ODA3NzkxLCJleHAiOjE3ODYxMDM3OTF9.JYeeL8mqdSONQL61Ff06QrTcIa0VZ7VffP7Abts9Jrc; Path=/; HttpOnly; Secure"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "503"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1f7-O65WOSVMUdMYqFz8hwetpaj6GoQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 11:56:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpIiwiaWF0IjoxNzg0ODA3NzkxLCJleHAiOjE3ODQ4MDg2OTF9.Dl3wXHCRmlPEF06IYCmHjg3g0uq9vs0Nwkkmm5tktDA\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YTYwOWVmZWE4ZWU3ZTI4ZmYzYmZmNmYiLCJyb2xlIjoic3R1ZGVudCIsIm5hbWUiOiJBYmhpIiwiaWF0IjoxNzg0ODA3NzkxLCJleHAiOjE3ODYxMDM3OTF9.JYeeL8mqdSONQL61Ff06QrTcIa0VZ7VffP7Abts9Jrc\"\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "LogOut",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/signOut",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signOut"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verify-email",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/v1/user/verify-email/984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "verify-email",
+                "984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c"
+              ]
+            },
+            "description": "Verify-email"
+          },
+          "response": [
+            {
+              "name": "verify-email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/verify-email/24a5add786c5113fc200306193ba666dd69910cff13edef643618b934576d446",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "verify-email",
+                    "24a5add786c5113fc200306193ba666dd69910cff13edef643618b934576d446"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-OiVW2CZT+VtRtyO9/7whrldSJR0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 09:08:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"isEmailVerified\": true\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "verify-email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/verify-email/c9507f0353fe274118d1f4bfddab7c93335338daf8a0429029be46186c0ebed2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "verify-email",
+                    "c9507f0353fe274118d1f4bfddab7c93335338daf8a0429029be46186c0ebed2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-OiVW2CZT+VtRtyO9/7whrldSJR0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 10:07:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"isEmailVerified\": true\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "verify-email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/verify-email/984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "verify-email",
+                    "984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "790"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-OiVW2CZT+VtRtyO9/7whrldSJR0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 11:17:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"isEmailVerified\": true\n    },\n    \"success\": true\n}"
+            },
+            {
+              "name": "verify-email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5050/api/v1/user/verify-email/984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5050",
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "verify-email",
+                    "984b934dd189180de5fc10428b53a24c310e6e94edbaf48a7feb3dbbfe89193c"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "790"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-OiVW2CZT+VtRtyO9/7whrldSJR0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 11:17:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"isEmailVerified\": true\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend-Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    // \"email\":\"abhimanyusingh703@gmail.com\",\r\n    // \"password\":\"1iP@jaatabhi\"\r\n    // \"role\": \"Student\"\r\n// }\r\n\r\n\r\n{\r\n    \"email\": \"RajSihag33@gmail.com\",\r\n    \"password\": \"2iP@Abhi0020\"\r\n}"
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/Resend-verifyEmail",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "Resend-verifyEmail"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Resend-Email",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "// {\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    // \"email\":\"abhimanyusingh703@gmail.com\",\r\n    // \"password\":\"1iP@jaatabhi\"\r\n    // \"role\": \"Student\"\r\n// }\r\n\r\n\r\n{\r\n    \"email\": \"RajSihag33@gmail.com\",\r\n    \"password\": \"2iP@Abhi0020\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/Resend-verifyEmail",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "Resend-verifyEmail"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "107"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6b-Ed1yxiem9cERFPHx2tbDhvKPXX0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Jul 2026 10:34:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": \"b5026889a3338c84d33970ecb169dd958bc3f5695ca556a9c36b0e7e2adcc8e6\",\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/profile",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Profile",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/profile",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "858"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "318"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"13e-dTfLFnxUoeGT5omvXxKjfGSQO7M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 11:33:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n        \"name\": \"Abhimanyu Singh\",\n        \"isEmailVerified\": true,\n        \"role\": \"student\",\n        \"createdCourses\": [],\n        \"lastActive\": \"2026-07-23T11:33:07.526Z\",\n        \"createdAt\": \"2026-07-22T10:44:14.568Z\",\n        \"updatedAt\": \"2026-07-23T11:33:07.527Z\",\n        \"__v\": 0,\n        \"id\": \"6a609efea8ee7e28ff3bff6f\"\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "change-password",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"currentPassword\": \"1iP@jaatabhi\",\r\n    \"newPassword\": \"2iP@Abhi0020\"   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/change-password",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "change-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "change-password",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"currentPassword\": \"1iP@jaatabhi\",\r\n    \"newPassword\": \"2iP@Abhi0020\"   \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/change-password",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "change-password"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "873"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3a-bxG0gfDga46P740CU/artcXtx84\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 11:56:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"password updated successfully\"\n}"
+            },
+            {
+              "name": "change-password",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"currentPassword\": \"1iP@jaatabhi\",\r\n    \"newPassword\": \"2iP@Abhi0020\"   \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/change-password",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "change-password"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "873"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "58"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3a-bxG0gfDga46P740CU/artcXtx84\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 11:56:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"password updated successfully\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "forgot-password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"abhimanyu33@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/forgot-password",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "forgot-password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"abhimanyu33@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/forgot-password",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4d-FOt4GaQi/5g7zsHQxdx3OMdoJ00\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 12:27:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"sucess\": true,\n    \"message\": \" reset password instruction is sent to your email\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "reset-password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"password\": \"1pi@7872992812#\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/reset-password/025f5ec851975007afaa6274ce39ff591c544be88a852b66c9014f7df6e14cf1",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "reset-password",
+                "025f5ec851975007afaa6274ce39ff591c544be88a852b66c9014f7df6e14cf1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "reset-password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"password\": \"1pi@7872992812#\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/reset-password/025f5ec851975007afaa6274ce39ff591c544be88a852b66c9014f7df6e14cf1",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "reset-password",
+                    "025f5ec851975007afaa6274ce39ff591c544be88a852b66c9014f7df6e14cf1"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "777"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "43"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2b-1VEYrALsASM1FPofQg9lAhHzFxU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 12:47:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"data\": {},\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "UpdateProfile",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"Abhi\",\r\n    \"email\": \"Abhimanyu33@gmail.com\",\r\n    \"bio\":\"Hi we are hiring backend Dev..\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/user/profile",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "UpdateProfile",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\":\"Abhi\",\r\n    \"email\": \"Abhimanyu33@gmail.com\",\r\n    \"bio\":\"Hi we are hiring backend Dev..\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/user/profile",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "268"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"10c-Bv3mCqmHvAO1q/05KEMIoWsoV0M\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 23 Jul 2026 11:44:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"data\": {\n            \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n            \"name\": \"Abhi\",\n            \"email\": \"abhimanyu33@gmail.com\",\n            \"role\": \"student\",\n            \"avatar\": \"default-avatar.png\",\n            \"createdCourses\": [],\n            \"bio\": \"Hi we are hiring backend Dev..\",\n            \"id\": \"6a609efea8ee7e28ff3bff6f\"\n        }\n    },\n    \"success\": true\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Server-health",
+      "item": [
+        {
+          "name": "HealthStatus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/server-Health/Status",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "server-Health",
+                "Status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "HealthStatus",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/server-Health/Status",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "server-Health",
+                    "Status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "404"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"194-TOWiltiKaARK/oYSa1a+ZkZ1Kdg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 01 Aug 2026 17:05:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"OK\",\n    \"timestamp\": \"Sat Aug 01 2026 22:35:50 GMT+0530 (India Standard Time)\",\n    \"services\": {\n        \"database\": {\n            \"status\": \"healthy\",\n            \"details\": {\n                \"isConnected\": true,\n                \"readyState\": 1,\n                \"host\": \"127.0.0.1\",\n                \"name\": \"LAMS\",\n                \"readyStateText\": \"Connected\"\n            }\n        },\n        \"server\": {\n            \"status\": \"healthy\",\n            \"uptime\": 46.2817712,\n            \"memoryUsage\": {\n                \"rss\": 95514624,\n                \"heapTotal\": 41545728,\n                \"heapUsed\": 38410856,\n                \"external\": 21134622,\n                \"arrayBuffers\": 18329661\n            }\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "HealthStatus",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/server-Health/Status",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "server-Health",
+                "Status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "course-service",
+      "item": [
+        {
+          "name": "Published",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyu33@gmail.com\",\r\n    \"password\":\"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n\r\n\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }"
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/search",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "search"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Published course",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyu33@gmail.com\",\r\n    \"password\":\"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n\r\n\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }"
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/Published",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "Published"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "5"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "858"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "80"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"50-xQuB1rc77RO0P0+m3Zd1Mkz/ghs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 08 Aug 2026 12:22:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"sucess\": true,\n    \"data\": [],\n    \"pagination\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"total\": 0,\n        \"pages\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyu33@gmail.com\",\r\n    \"password\":\"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n\r\n\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }"
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/search",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "search"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "search",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\":\"abhimanyu33@gmail.com\",\r\n    \"password\":\"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n\r\n\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }"
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/search",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "search"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "770"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24-AJZ8G18oW/SouOo5+DJE9SNYXUY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 08 Aug 2026 12:27:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [],\n    \"count\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "create-course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "uuid": "afb42341-ad55-4b99-99f7-9a8b08332f24",
+                  "src": "postman-cloud:///1f19326b-e480-4fb0-9ab8-233b67f37dc3"
+                },
+                {
+                  "key": "title",
+                  "value": "\"Data Engineering\"",
+                  "type": "text",
+                  "uuid": "65033179-3d19-4d33-9152-a54f771529b3"
+                },
+                {
+                  "key": "subtitle",
+                  "value": "\"Build your career into Data\"",
+                  "type": "text",
+                  "uuid": "a91a8c50-bebb-4aa4-987a-3d838c086706"
+                },
+                {
+                  "key": "description",
+                  "value": "\"Hii Here is the industry Standard Data Engineering course. Please check it out ",
+                  "type": "text",
+                  "uuid": "5d12ac27-ce97-4d4c-b74d-67a2b43c3327"
+                },
+                {
+                  "key": "category",
+                  "value": "Data",
+                  "type": "text",
+                  "uuid": "62277989-4b11-45b3-9640-365ae1edcdfb"
+                },
+                {
+                  "key": "level",
+                  "value": "intermediate",
+                  "type": "text",
+                  "uuid": "9b32705f-d8ec-4472-980f-6c57b7cde78e"
+                },
+                {
+                  "key": "price",
+                  "value": "340000",
+                  "type": "text",
+                  "uuid": "71cc7961-f353-469f-bda2-73c442a802d7"
+                },
+                {
+                  "key": "instructor",
+                  "value": "6a609efea8ee7e28ff3bff6f",
+                  "type": "text",
+                  "uuid": "933ee768-ec9d-4048-a4f6-b4b4b5d1701e"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create-course",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "thumbnail",
+                      "type": "file",
+                      "uuid": "afb42341-ad55-4b99-99f7-9a8b08332f24",
+                      "src": "postman-cloud:///1f19326b-e480-4fb0-9ab8-233b67f37dc3"
+                    },
+                    {
+                      "key": "title",
+                      "value": "\"Data Engineering\"",
+                      "type": "text",
+                      "uuid": "65033179-3d19-4d33-9152-a54f771529b3"
+                    },
+                    {
+                      "key": "subtitle",
+                      "value": "\"Build your career into Data\"",
+                      "type": "text",
+                      "uuid": "a91a8c50-bebb-4aa4-987a-3d838c086706"
+                    },
+                    {
+                      "key": "description",
+                      "value": "\"Hii Here is the industry Standard Data Engineering course. Please check it out ",
+                      "type": "text",
+                      "uuid": "5d12ac27-ce97-4d4c-b74d-67a2b43c3327"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Data",
+                      "type": "text",
+                      "uuid": "62277989-4b11-45b3-9640-365ae1edcdfb"
+                    },
+                    {
+                      "key": "level",
+                      "value": "intermediate",
+                      "type": "text",
+                      "uuid": "9b32705f-d8ec-4472-980f-6c57b7cde78e"
+                    },
+                    {
+                      "key": "price",
+                      "value": "340000",
+                      "type": "text",
+                      "uuid": "71cc7961-f353-469f-bda2-73c442a802d7"
+                    },
+                    {
+                      "key": "instructor",
+                      "value": "6a609efea8ee7e28ff3bff6f",
+                      "type": "text",
+                      "uuid": "933ee768-ec9d-4048-a4f6-b4b4b5d1701e"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "7"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "895"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "691"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2b3-kgTicl2tfKwaWGo2XCv/DHOCGBI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 08 Aug 2026 13:31:30 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"data\": {\n            \"title\": \"\\\"Data Engineering\\\"\",\n            \"subtitle\": \"\\\"Build your career into Data\\\"\",\n            \"description\": \"\\\"Hii Here is the industry Standard Data Engineering course. Please check it out\",\n            \"category\": \"Data\",\n            \"level\": \"intermediate\",\n            \"price\": 340000,\n            \"thumbnail\": \"https://res.cloudinary.com/abhimanybuildcloud/image/upload/v1786195890/djhjeinqfwinyysmkupz.jpg\",\n            \"enrolledStudents\": [],\n            \"lectures\": [],\n            \"instructor\": \"6a609efea8ee7e28ff3bff6f\",\n            \"isPublished\": false,\n            \"totalDuration\": 0,\n            \"totalLectures\": 0,\n            \"_id\": \"6a772fb2448e77a5611129e7\",\n            \"createdAt\": \"2026-08-08T13:31:30.959Z\",\n            \"updatedAt\": \"2026-08-08T13:31:30.959Z\",\n            \"__v\": 0,\n            \"averageRating\": 0,\n            \"id\": \"6a772fb2448e77a5611129e7\"\n        }\n    },\n    \"success\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "createdCourse",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "createdCourse",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "677"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2a5-Lf+/AmbYiQnPpr5uLN4VI2Dz2U8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 11:45:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"_id\": \"6a772fb2448e77a5611129e7\",\n            \"title\": \"\\\"Data Engineering\\\"\",\n            \"subtitle\": \"\\\"Build your career into Data\\\"\",\n            \"description\": \"\\\"Hii Here is the industry Standard Data Engineering course. Please check it out\",\n            \"category\": \"Data\",\n            \"level\": \"intermediate\",\n            \"price\": 340000,\n            \"thumbnail\": \"https://res.cloudinary.com/abhimanybuildcloud/image/upload/v1786195890/djhjeinqfwinyysmkupz.jpg\",\n            \"enrolledStudents\": [],\n            \"lectures\": [],\n            \"instructor\": \"6a609efea8ee7e28ff3bff6f\",\n            \"isPublished\": false,\n            \"totalDuration\": 0,\n            \"totalLectures\": 0,\n            \"createdAt\": \"2026-08-08T13:31:30.959Z\",\n            \"updatedAt\": \"2026-08-08T13:31:30.959Z\",\n            \"__v\": 0,\n            \"averageRating\": 0,\n            \"id\": \"6a772fb2448e77a5611129e7\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "getCourseDetails",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "c",
+                "6a772fb2448e77a5611129e7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "c",
+                    "6a772fb2448e77a5611129e7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2037"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7f5-RP2uzBam5GwDWeYPesIHwFFLnzo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 11:53:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"$__\": {\n            \"activePaths\": {\n                \"paths\": {\n                    \"instructor\": \"init\",\n                    \"thumbnail\": \"init\",\n                    \"price\": \"init\",\n                    \"category\": \"init\",\n                    \"title\": \"init\",\n                    \"level\": \"init\",\n                    \"enrolledStudents\": \"init\",\n                    \"lectures\": \"init\",\n                    \"isPublished\": \"init\",\n                    \"totalDuration\": \"init\",\n                    \"totalLectures\": \"init\",\n                    \"_id\": \"init\",\n                    \"subtitle\": \"init\",\n                    \"description\": \"init\",\n                    \"createdAt\": \"init\",\n                    \"updatedAt\": \"init\",\n                    \"__v\": \"init\"\n                },\n                \"states\": {\n                    \"require\": {},\n                    \"default\": {},\n                    \"init\": {\n                        \"_id\": true,\n                        \"title\": true,\n                        \"subtitle\": true,\n                        \"description\": true,\n                        \"category\": true,\n                        \"level\": true,\n                        \"price\": true,\n                        \"thumbnail\": true,\n                        \"enrolledStudents\": true,\n                        \"lectures\": true,\n                        \"instructor\": true,\n                        \"isPublished\": true,\n                        \"totalDuration\": true,\n                        \"totalLectures\": true,\n                        \"createdAt\": true,\n                        \"updatedAt\": true,\n                        \"__v\": true\n                    }\n                }\n            },\n            \"skipId\": true,\n            \"populated\": {\n                \"lectures\": {\n                    \"value\": [],\n                    \"options\": {\n                        \"_docs\": {\n                            \"6a772fb2448e77a5611129e7\": []\n                        },\n                        \"_childDocs\": [],\n                        \"path\": \"lectures\",\n                        \"select\": \"title  subtitle description isPreview order\",\n                        \"_queryProjection\": null\n                    }\n                },\n                \"instructor\": {\n                    \"value\": \"6a609efea8ee7e28ff3bff6f\",\n                    \"options\": {\n                        \"_docs\": {\n                            \"6a772fb2448e77a5611129e7\": \"6a609efea8ee7e28ff3bff6f\"\n                        },\n                        \"_childDocs\": [\n                            {\n                                \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n                                \"name\": \"Abhi\",\n                                \"avatar\": \"default-avatar.png\",\n                                \"bio\": \"Hi we are hiring backend Dev..\",\n                                \"id\": \"6a609efea8ee7e28ff3bff6f\"\n                            }\n                        ],\n                        \"path\": \"instructor\",\n                        \"select\": \"name avatar bio\",\n                        \"_queryProjection\": null\n                    }\n                }\n            }\n        },\n        \"$isNew\": false,\n        \"_doc\": {\n            \"_id\": \"6a772fb2448e77a5611129e7\",\n            \"title\": \"\\\"Data Engineering\\\"\",\n            \"subtitle\": \"\\\"Build your career into Data\\\"\",\n            \"description\": \"\\\"Hii Here is the industry Standard Data Engineering course. Please check it out\",\n            \"category\": \"Data\",\n            \"level\": \"intermediate\",\n            \"price\": 340000,\n            \"thumbnail\": \"https://res.cloudinary.com/abhimanybuildcloud/image/upload/v1786195890/djhjeinqfwinyysmkupz.jpg\",\n            \"enrolledStudents\": [],\n            \"lectures\": [],\n            \"instructor\": {\n                \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n                \"name\": \"Abhi\",\n                \"avatar\": \"default-avatar.png\",\n                \"bio\": \"Hi we are hiring backend Dev..\",\n                \"id\": \"6a609efea8ee7e28ff3bff6f\"\n            },\n            \"isPublished\": false,\n            \"totalDuration\": 0,\n            \"totalLectures\": 0,\n            \"createdAt\": \"2026-08-08T13:31:30.959Z\",\n            \"updatedAt\": \"2026-08-08T13:31:30.959Z\",\n            \"__v\": 0\n        },\n        \"averageRating\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "UdateCourseDetails",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "A Data To Vice President",
+                  "type": "text",
+                  "uuid": "01b62225-23d0-491d-a450-ec25475d9eeb"
+                },
+                {
+                  "key": "subtitle",
+                  "value": "A New Data Engineer File",
+                  "type": "text",
+                  "uuid": "d8010c05-acb4-4b49-b674-d537f272dc09"
+                },
+                {
+                  "key": "description",
+                  "value": "New Era of Data and Ai together",
+                  "type": "text",
+                  "uuid": "b4b42ba5-bed7-4e36-8f5c-bc7360b8734f"
+                },
+                {
+                  "key": "category",
+                  "value": "Data/AI",
+                  "type": "text",
+                  "uuid": "d82f38d1-a125-412f-b375-63276424aae1"
+                },
+                {
+                  "key": "level",
+                  "value": "intermediate",
+                  "type": "text",
+                  "uuid": "1fa73538-bbbf-4e5d-bd4d-0328f372cf44"
+                },
+                {
+                  "key": "price",
+                  "value": "992992",
+                  "type": "text",
+                  "uuid": "645d4344-9be2-4753-9094-7538f0d05543"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "c",
+                "6a772fb2448e77a5611129e7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "UdateCourseDetails",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "title",
+                      "value": "A Data To Vice President",
+                      "type": "text",
+                      "uuid": "01b62225-23d0-491d-a450-ec25475d9eeb"
+                    },
+                    {
+                      "key": "subtitle",
+                      "value": "A New Data Engineer File",
+                      "type": "text",
+                      "uuid": "d8010c05-acb4-4b49-b674-d537f272dc09"
+                    },
+                    {
+                      "key": "description",
+                      "value": "New Era of Data and Ai together",
+                      "type": "text",
+                      "uuid": "b4b42ba5-bed7-4e36-8f5c-bc7360b8734f"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Data/AI",
+                      "type": "text",
+                      "uuid": "d82f38d1-a125-412f-b375-63276424aae1"
+                    },
+                    {
+                      "key": "level",
+                      "value": "intermediate",
+                      "type": "text",
+                      "uuid": "1fa73538-bbbf-4e5d-bd4d-0328f372cf44"
+                    },
+                    {
+                      "key": "price",
+                      "value": "992992",
+                      "type": "text",
+                      "uuid": "645d4344-9be2-4753-9094-7538f0d05543"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "c",
+                    "6a772fb2448e77a5611129e7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "656"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"290-pGW1MgC+p7q9fFdeRsD3vYNDUXg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 12:25:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"course updated successfully\",\n    \"data\": {\n        \"_id\": \"6a772fb2448e77a5611129e7\",\n        \"title\": \"A Data To Vice President\",\n        \"subtitle\": \"A New Data Engineer File\",\n        \"description\": \"New Era of Data and Ai together\",\n        \"category\": \"Data/AI\",\n        \"level\": \"intermediate\",\n        \"price\": 992992,\n        \"thumbnail\": \"https://res.cloudinary.com/abhimanybuildcloud/image/upload/v1786195890/djhjeinqfwinyysmkupz.jpg\",\n        \"enrolledStudents\": [],\n        \"lectures\": [],\n        \"instructor\": \"6a609efea8ee7e28ff3bff6f\",\n        \"isPublished\": false,\n        \"totalDuration\": 0,\n        \"totalLectures\": 0,\n        \"createdAt\": \"2026-08-08T13:31:30.959Z\",\n        \"updatedAt\": \"2026-08-09T12:25:16.413Z\",\n        \"__v\": 0,\n        \"averageRating\": 0,\n        \"id\": \"6a772fb2448e77a5611129e7\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "addLectureToCourse",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "A Video on Data Engineering",
+                  "type": "text",
+                  "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                },
+                {
+                  "key": "description",
+                  "value": "A Data SQL POSTGRESQL ",
+                  "type": "text",
+                  "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                },
+                {
+                  "key": "isPreview",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                  "src": "postman-cloud:///1f193f74-33d9-42f0-b017-0b258183c7bc"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "c",
+                "6a772fb2448e77a5611129e7",
+                "lectures"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Leacture added",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "title",
+                      "value": "A Video on Data Engineering",
+                      "type": "text",
+                      "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                    },
+                    {
+                      "key": "description",
+                      "value": "A Data SQL POSTGRESQL ",
+                      "type": "text",
+                      "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                    },
+                    {
+                      "key": "isPreview",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                    },
+                    {
+                      "key": "video",
+                      "type": "file",
+                      "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                      "src": "postman-cloud:///1f193f74-33d9-42f0-b017-0b258183c7bc"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "c",
+                    "6a772fb2448e77a5611129e7",
+                    "lectures"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "553"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"229-YLmuj4LWotn/8tNt73mPKqeZKI4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 13:48:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Leacture added successfully\",\n    \"data\": {\n        \"title\": \"A Video on Data Engineering\",\n        \"description\": \"A Data SQL POSTGRESQL\",\n        \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n        \"duration\": 3.36,\n        \"publicId\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n        \"isPreview\": true,\n        \"order\": 1,\n        \"_id\": \"6a7885438c6ab3fafe83ff14\",\n        \"createdAt\": \"2026-08-09T13:48:51.261Z\",\n        \"updatedAt\": \"2026-08-09T13:48:51.261Z\",\n        \"__v\": 0,\n        \"id\": \"6a7885438c6ab3fafe83ff14\"\n    }\n}"
+            },
+            {
+              "name": "addLectureToCourse",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "title",
+                      "value": "A Video on Data Engineering",
+                      "type": "text",
+                      "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                    },
+                    {
+                      "key": "description",
+                      "value": "A Data SQL POSTGRESQL ",
+                      "type": "text",
+                      "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                    },
+                    {
+                      "key": "isPreview",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                    },
+                    {
+                      "key": "video",
+                      "type": "file",
+                      "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                      "src": "postman-cloud:///1f193f74-33d9-42f0-b017-0b258183c7bc"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "c",
+                    "6a772fb2448e77a5611129e7",
+                    "lectures"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "553"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"229-YLmuj4LWotn/8tNt73mPKqeZKI4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 13:48:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Leacture added successfully\",\n    \"data\": {\n        \"title\": \"A Video on Data Engineering\",\n        \"description\": \"A Data SQL POSTGRESQL\",\n        \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n        \"duration\": 3.36,\n        \"publicId\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n        \"isPreview\": true,\n        \"order\": 1,\n        \"_id\": \"6a7885438c6ab3fafe83ff14\",\n        \"createdAt\": \"2026-08-09T13:48:51.261Z\",\n        \"updatedAt\": \"2026-08-09T13:48:51.261Z\",\n        \"__v\": 0,\n        \"id\": \"6a7885438c6ab3fafe83ff14\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "addLectureToCourse",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "A Video on Data Engineering",
+                  "type": "text",
+                  "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                },
+                {
+                  "key": "description",
+                  "value": "A Data SQL POSTGRESQL ",
+                  "type": "text",
+                  "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                },
+                {
+                  "key": "isPreview",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                  "src": "postman-cloud:///1f194002-518d-4010-a340-ce386cd7e613"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "c",
+                "6a772fb2448e77a5611129e7",
+                "lectures"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getLecture",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "A Video on Data Engineering",
+                  "type": "text",
+                  "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                },
+                {
+                  "key": "description",
+                  "value": "A Data SQL POSTGRESQL ",
+                  "type": "text",
+                  "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                },
+                {
+                  "key": "isPreview",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                  "src": "postman-cloud:///1f194002-518d-4010-a340-ce386cd7e613"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "course",
+                "c",
+                "6a772fb2448e77a5611129e7",
+                "lectures"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getLecture",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "title",
+                      "value": "A Video on Data Engineering",
+                      "type": "text",
+                      "uuid": "2f4a3660-8d9c-40ac-a618-ad7cbe8770a7"
+                    },
+                    {
+                      "key": "description",
+                      "value": "A Data SQL POSTGRESQL ",
+                      "type": "text",
+                      "uuid": "c78fbbb7-5acf-4d4b-975e-4db810187539"
+                    },
+                    {
+                      "key": "isPreview",
+                      "value": "true",
+                      "type": "text",
+                      "uuid": "523df078-3278-49b3-89b6-65559efb7e01"
+                    },
+                    {
+                      "key": "video",
+                      "type": "file",
+                      "uuid": "23e2646f-e064-40bb-a20e-ea7a6596c1e5",
+                      "src": "postman-cloud:///1f194002-518d-4010-a340-ce386cd7e613"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/course/c/6a772fb2448e77a5611129e7/lectures",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "course",
+                    "c",
+                    "6a772fb2448e77a5611129e7",
+                    "lectures"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "961"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3c1-bYKENbEtYUM6QHKkBHAKd52jkAc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 09 Aug 2026 16:38:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"sucess\": true,\n    \"data\": {\n        \"lectures\": [\n            {\n                \"_id\": \"6a7885438c6ab3fafe83ff14\",\n                \"title\": \"A Video on Data Engineering\",\n                \"description\": \"A Data SQL POSTGRESQL\",\n                \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n                \"duration\": 3.36,\n                \"isPreview\": true,\n                \"order\": 1,\n                \"id\": \"6a7885438c6ab3fafe83ff14\"\n            },\n            {\n                \"_id\": \"6a788fd389c471b62fdb08d1\",\n                \"title\": \"A Video on Data Engineering\",\n                \"description\": \"A Data SQL POSTGRESQL\",\n                \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286035/lyp0t4qpxmykb7ruqcyb.mp4\",\n                \"duration\": 3.36,\n                \"isPreview\": true,\n                \"order\": 2,\n                \"id\": \"6a788fd389c471b62fdb08d1\"\n            },\n            {\n                \"_id\": \"6a78913589c471b62fdb08d6\",\n                \"title\": \"A Video on Data Engineering\",\n                \"description\": \"A Data SQL POSTGRESQL\",\n                \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286389/okpa0jxcrrt8p1eckwwo.mp4\",\n                \"duration\": 3.57,\n                \"isPreview\": true,\n                \"order\": 3,\n                \"id\": \"6a78913589c471b62fdb08d6\"\n            }\n        ],\n        \"isEnrolled\": false,\n        \"isInstructor\": true\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "courseProgress-service",
+      "item": [
+        {
+          "name": "getUserCourseProgress",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "progress",
+                "6a772fb2448e77a5611129e7"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getUserCourseProgress",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "progress",
+                    "6a772fb2448e77a5611129e7"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1668"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"684-3SpPdsI/ufWIGiEPO/0Lbd8PzlQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 10 Aug 2026 06:01:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"courseDetails\": {\n            \"_id\": \"6a772fb2448e77a5611129e7\",\n            \"lectures\": [\n                {\n                    \"_id\": \"6a7885438c6ab3fafe83ff14\",\n                    \"title\": \"A Video on Data Engineering\",\n                    \"description\": \"A Data SQL POSTGRESQL\",\n                    \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n                    \"duration\": 3.36,\n                    \"publicId\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786283330/dptinnutihibd4p3klrr.mp4\",\n                    \"isPreview\": true,\n                    \"order\": 1,\n                    \"createdAt\": \"2026-08-09T13:48:51.261Z\",\n                    \"updatedAt\": \"2026-08-09T13:48:51.261Z\",\n                    \"__v\": 0,\n                    \"id\": \"6a7885438c6ab3fafe83ff14\"\n                },\n                {\n                    \"_id\": \"6a788fd389c471b62fdb08d1\",\n                    \"title\": \"A Video on Data Engineering\",\n                    \"description\": \"A Data SQL POSTGRESQL\",\n                    \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286035/lyp0t4qpxmykb7ruqcyb.mp4\",\n                    \"duration\": 3.36,\n                    \"publicId\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286035/lyp0t4qpxmykb7ruqcyb.mp4\",\n                    \"isPreview\": true,\n                    \"order\": 2,\n                    \"createdAt\": \"2026-08-09T14:33:55.430Z\",\n                    \"updatedAt\": \"2026-08-09T14:33:55.430Z\",\n                    \"__v\": 0,\n                    \"id\": \"6a788fd389c471b62fdb08d1\"\n                },\n                {\n                    \"_id\": \"6a78913589c471b62fdb08d6\",\n                    \"title\": \"A Video on Data Engineering\",\n                    \"description\": \"A Data SQL POSTGRESQL\",\n                    \"videoUrl\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286389/okpa0jxcrrt8p1eckwwo.mp4\",\n                    \"duration\": 3.57,\n                    \"publicId\": \"https://res.cloudinary.com/abhimanybuildcloud/video/upload/v1786286389/okpa0jxcrrt8p1eckwwo.mp4\",\n                    \"isPreview\": true,\n                    \"order\": 3,\n                    \"createdAt\": \"2026-08-09T14:39:49.016Z\",\n                    \"updatedAt\": \"2026-08-09T14:39:49.016Z\",\n                    \"__v\": 0,\n                    \"id\": \"6a78913589c471b62fdb08d6\"\n                }\n            ],\n            \"averageRating\": 0,\n            \"id\": \"6a772fb2448e77a5611129e7\"\n        },\n        \"progress\": [],\n        \"isCompleted\": false,\n        \"completionPercentage\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "updateLectureProgress",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/lectures/6a788fd389c471b62fdb08d1",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "progress",
+                "6a772fb2448e77a5611129e7",
+                "lectures",
+                "6a788fd389c471b62fdb08d1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "updateLectureProgress",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/lectures/6a788fd389c471b62fdb08d1",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "progress",
+                    "6a772fb2448e77a5611129e7",
+                    "lectures",
+                    "6a788fd389c471b62fdb08d1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "261"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"105-B6G3xtzwg/wqfxCz7aLUB0OwFT8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 10 Aug 2026 06:09:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Leacture progress updated successfully\",\n    \"data\": {\n        \"lectureProgress\": [\n            {\n                \"lecture\": \"6a788fd389c471b62fdb08d1\",\n                \"isCompleted\": true,\n                \"watchTime\": 0,\n                \"_id\": \"6a796b208d4b6023bdac8341\",\n                \"lastWatched\": \"2026-08-10T06:09:36.974Z\"\n            }\n        ],\n        \"isCompleted\": true\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "markCourseAsCompleted",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/complete",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "progress",
+                "6a772fb2448e77a5611129e7",
+                "complete"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "markCourseAsCompleted",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/complete",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "progress",
+                    "6a772fb2448e77a5611129e7",
+                    "complete"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "558"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"22e-HrB5i/FSwU3FBGhU+2rBroOsJgU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 10 Aug 2026 06:16:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Course marked as completed\",\n    \"data\": {\n        \"courseProgress\": {\n            \"_id\": \"6a796b208d4b6023bdac833f\",\n            \"user\": \"6a609efea8ee7e28ff3bff6f\",\n            \"course\": \"6a772fb2448e77a5611129e7\",\n            \"isCompleted\": true,\n            \"completionPercentage\": 100,\n            \"lectureProgress\": [\n                {\n                    \"lecture\": \"6a788fd389c471b62fdb08d1\",\n                    \"isCompleted\": true,\n                    \"watchTime\": 0,\n                    \"_id\": \"6a796b208d4b6023bdac8341\",\n                    \"lastWatched\": \"2026-08-10T06:09:36.974Z\"\n                }\n            ],\n            \"lastAccessed\": \"2026-08-10T06:09:36.959Z\",\n            \"createdAt\": \"2026-08-10T06:09:36.963Z\",\n            \"updatedAt\": \"2026-08-10T06:09:36.981Z\",\n            \"__v\": 1,\n            \"id\": \"6a796b208d4b6023bdac833f\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "coruseProgressReset",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/reset",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "progress",
+                "6a772fb2448e77a5611129e7",
+                "reset"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "coruseProgressReset",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/progress/6a772fb2448e77a5611129e7/reset",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "progress",
+                    "6a772fb2448e77a5611129e7",
+                    "reset"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "547"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"223-qsptwpgkmuGqcyEOBIyngkFKTX8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 10 Aug 2026 06:22:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Course progress reset successfully\",\n    \"data\": {\n        \"_id\": \"6a796b208d4b6023bdac833f\",\n        \"user\": \"6a609efea8ee7e28ff3bff6f\",\n        \"course\": \"6a772fb2448e77a5611129e7\",\n        \"isCompleted\": false,\n        \"completionPercentage\": 0,\n        \"lectureProgress\": [\n            {\n                \"lecture\": \"6a788fd389c471b62fdb08d1\",\n                \"isCompleted\": false,\n                \"watchTime\": 0,\n                \"_id\": \"6a796b208d4b6023bdac8341\",\n                \"lastWatched\": \"2026-08-10T06:09:36.974Z\"\n            }\n        ],\n        \"lastAccessed\": \"2026-08-10T06:09:36.959Z\",\n        \"createdAt\": \"2026-08-10T06:09:36.963Z\",\n        \"updatedAt\": \"2026-08-10T06:22:04.257Z\",\n        \"__v\": 1,\n        \"id\": \"6a796b208d4b6023bdac833f\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RazorPay",
+      "item": [
+        {
+          "name": "createPayment",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"courseId\": \"6a772fb2448e77a5611129e7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/razorpay/create-order",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "razorpay",
+                "create-order"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "createPayment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"courseId\": \"6a772fb2448e77a5611129e7\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/razorpay/create-order",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "razorpay",
+                    "create-order"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "8"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "883"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "550"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"226-35oUi05ADu1FT7OrXA5dUt+Cw6I\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 11 Aug 2026 06:46:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"order\": {\n        \"amount\": 99900,\n        \"amount_due\": 99900,\n        \"amount_paid\": 0,\n        \"attempts\": 0,\n        \"created_at\": 1786430787,\n        \"currency\": \"INR\",\n        \"entity\": \"order\",\n        \"id\": \"order_TOMv27pSrU4SmR\",\n        \"notes\": {\n            \"courseId\": \"6a772fb2448e77a5611129e7\",\n            \"userId\": \"6a609efea8ee7e28ff3bff6f\"\n        },\n        \"offer_id\": null,\n        \"receipt\": \"course_6a772fb2448e77a5611129e71786430787157\",\n        \"status\": \"created\"\n    },\n    \"course\": {\n        \"name\": \"A Data To Vice President\",\n        \"description\": \"New Era of Data and Ai together\",\n        \"image\": \"https://res.cloudinary.com/abhimanybuildcloud/image/upload/v1786195890/djhjeinqfwinyysmkupz.jpg\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "verifyPayments",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"razorpay_order_id\": \"order_TOOpLQmxLln84j\",\r\n    \"razorpay_payment_id\":\"pay_TOOplRzt4Bflqf\",\r\n    \"razorpay_signature\":\"6b671f2a6e085f57176836d7772d482be6f64d286f51876826d514de371bccf7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/razorpay/verify-Payment",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "razorpay",
+                "verify-Payment"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "verifyPayments",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"razorpay_order_id\": \"order_TONRwGrdkW9ZNZ\",\r\n    \"razorpay_payment_id\":\"pay_TONSzSbOksiKKc\",\r\n    \"razorpay_signature\":\"e010868b72641e5b6c3e5bf801a69e5ea1760ec8396d7ad671cbd174e6df1767\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/razorpay/verify-Payment",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "razorpay",
+                    "verify-Payment"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "6"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "698"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "97"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"61-ZR++WlL9No59sLGX+LmDFf4f6WU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 11 Aug 2026 07:20:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment verified Successfully.\",\n    \"courseId\": \"6a772fb2448e77a5611129e7\"\n}"
+            },
+            {
+              "name": "verifyPayments",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"razorpay_order_id\": \"order_TOOpLQmxLln84j\",\r\n    \"razorpay_payment_id\":\"pay_TOOplRzt4Bflqf\",\r\n    \"razorpay_signature\":\"6b671f2a6e085f57176836d7772d482be6f64d286f51876826d514de371bccf7\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/razorpay/verify-Payment",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "razorpay",
+                    "verify-Payment"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "7"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "723"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "97"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"61-ZR++WlL9No59sLGX+LmDFf4f6WU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 11 Aug 2026 08:41:09 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Payment verified Successfully.\",\n    \"courseId\": \"6a772fb2448e77a5611129e7\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "purchase",
+      "item": [
+        {
+          "name": "getPurchasedCourses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/purchase/",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "purchase",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getPurchasedCourses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/purchase/",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "255"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ff-HSBAu37rLF+BYOQt0tHkS55QkOw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 18 Aug 2026 06:08:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"_id\": \"6a772fb2448e77a5611129e7\",\n            \"category\": \"Data/AI\",\n            \"instructor\": {\n                \"_id\": \"6a609efea8ee7e28ff3bff6f\",\n                \"name\": \"Abhi\",\n                \"avatar\": \"default-avatar.png\",\n                \"id\": \"6a609efea8ee7e28ff3bff6f\"\n            },\n            \"averageRating\": 0,\n            \"id\": \"6a772fb2448e77a5611129e7\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "getCoursePurchaseStatus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{LAMS}}/api/v1/purchase/course/6a772fb2448e77a5611129e7/detail-with-status",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "purchase",
+                "course",
+                "6a772fb2448e77a5611129e7",
+                "detail-with-status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getCoursePurchaseStatus",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{LAMS}}/api/v1/purchase/course/6a772fb2448e77a5611129e7/detail-with-status",
+                  "host": [
+                    "{{LAMS}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase",
+                    "course",
+                    "6a772fb2448e77a5611129e7",
+                    "detail-with-status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "RateLimit-Policy",
+                  "value": "10;w=900"
+                },
+                {
+                  "key": "RateLimit-Limit",
+                  "value": "10"
+                },
+                {
+                  "key": "RateLimit-Remaining",
+                  "value": "9"
+                },
+                {
+                  "key": "RateLimit-Reset",
+                  "value": "900"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "97"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"61-/rrveqITTnUDYskA9NU6kEugP3c\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 18 Aug 2026 06:14:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"data\": {\n        \"CoursePurchased\": {\n            \"_id\": \"6a7b0ee7174bbab8eb99f376\"\n        },\n        \"isPurchased\": true\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "handleStripeWebhook",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    // \"name\": \"Abhimanyu Singh\",\r\n    \"email\": \"abhimanyu33@gmail.com\",\r\n    \"password\": \"1pi@7872992812#\"\r\n    // \"role\": \"Student\"\r\n}\r\n// {\r\n//     \"email\": \"RajSihag33@gmail.com\",\r\n//     \"password\": \"2iP@Abhi0020\"\r\n// }"
+            },
+            "url": {
+              "raw": "{{LAMS}}/api/v1/purchase/webhook",
+              "host": [
+                "{{LAMS}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "purchase",
+                "webhook"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "LAMS",
+      "value": ""
+    }
+  ]
+}
