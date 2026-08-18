@@ -85,6 +85,15 @@ export const initiateStripeCheckout = catchAsync(async (req, res) => {
  * @route POST /api/v1/payments/webhook❌
  */
 export const handleStripeWebhook = catchAsync(async (req, res) => {
+  
+  console.log("========== STRIPE WEBHOOK ==========");
+  console.log("Content-Type:", req.headers["content-type"]);
+  console.log("Content-Length:", req.headers["content-length"]);
+  console.log("Body:", req.body);
+  console.log("Is Buffer:", Buffer.isBuffer(req.body));
+  console.log("Signature:", req.headers["stripe-signature"]);
+  console.log("====================================");
+
   let event
   try {
     const payloadString = JSON.stringify(req.body, null, 2);
@@ -96,9 +105,10 @@ export const handleStripeWebhook = catchAsync(async (req, res) => {
   });
 
 
-  event = stripe.webhooks.contructEvent(payloadString , header , secret)
+  event = stripe.webhooks.constructEvent(payloadString , header , secret)
   } catch (error) {
-    throw new ApiError(`Webhook error :${error.message}, 400`);
+    console.error("Stripe webhook error: ", error)
+    throw new ApiError(400, error.message )
   }
 
 
@@ -127,9 +137,9 @@ export const handleStripeWebhook = catchAsync(async (req, res) => {
 
     // make all lecture accessable 
 
-    if(purchase.course?.lecture?.length > 0 ){
+    if(purchase.course?.lectures?.length > 0 ){
       await Lecture.updateMany(
-        {_id: {$iin : purchase.course.length}},
+        {_id: {$in : purchase.course.length}},
         {$set: {isPreviewFree: true}}
       )
     }
@@ -145,7 +155,7 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
   const { courseId } = req.params
 
   const course = await Course.findById(courseId)
-    .populate('creator', 'name avatar')
+    .populate('instructor', 'name avatar')
     .populate('lectures', 'lectureTitle videoUrl duration');
 
   if (!course) {
@@ -154,8 +164,8 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
 
   // check if user has purchased the course..
 
-  const course = CoursePurchase.exists({
-    user: req.id,
+  const CoursePurchased = await CoursePurchase.exists({
+    user: req.user.id,
     course: courseId,
     status: 'completed'
   });
@@ -164,8 +174,8 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
     .json({
       success: true,
       data: {
-        course,
-        isPurchased: Boolean(purchased)
+        CoursePurchased,
+        isPurchased: Boolean(CoursePurchased)
       },
     });
 });
@@ -176,13 +186,13 @@ export const getCoursePurchaseStatus = catchAsync(async (req, res) => {
  */
 export const getPurchasedCourses = catchAsync(async (req, res) => {
   const purchases = await CoursePurchase.find({
-    userId: req.id,
+    user: req.user._id,
     status: "completed",
   }).populate({
-    path: "courseId",
+    path: "course",
     select: "courseTitle courseThumbnail courseDescription category",
     populate: {
-      path: "creator",
+      path: "instructor",
       select: "name avatar",
     },
   });
@@ -190,6 +200,6 @@ export const getPurchasedCourses = catchAsync(async (req, res) => {
   res.status(200)
     .json({
       success: true,
-      data: purchases.map((purchase) => purchase.courseId),
+      data: purchases.map((purchase) => purchase.course),
     });
 });

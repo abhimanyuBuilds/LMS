@@ -10,6 +10,7 @@ import UserRoute from "./routes/user.route.js"
 import courseRoute from "./routes/course.route.js"
 import courseProgress from "./routes/courseProgress.route.js"
 import healthRoute from "./routes/health.route.js"
+import purchaseRoute from "./routes/purchaseCourse.route.js"
 import razorPayRoute from "./routes/razorPay.route.js"
 import { apiLimiter } from "./middlewares/Auth.rateLimmter.middleware.js"
 
@@ -20,6 +21,15 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT
+
+// parse the webhook body
+
+app.use(
+      "/api/v1/purchase/webhook",
+  express.raw({ type: "application/json" })
+);
+
+
 
 // Body Parser Middleware
 app.use(express.json({ limit: "10kb" })); // Body limit is 10kb
@@ -60,6 +70,7 @@ app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/progress", courseProgress);
 app.use("/api/v1/razorpay",razorPayRoute)
 app.use("/server-Health", healthRoute);
+app.use("/api/v1/purchase", purchaseRoute)
 
 
 
